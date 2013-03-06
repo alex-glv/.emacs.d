@@ -1,0 +1,14 @@
+echo $PATH
+ls
+bash ~/.bashrc
+bash ~/.bash_profile 
+echo $PATH
+(setenv "PATH" (shell-command-to-string "source ~/.bashrc; echo -n $PATH"))
+echo $PATH
+echo $PATH
+source ~/.bash_profile 
+echo $PATH
+echo $PATH
+echo $PATH
+echo $PATH
+echo $PATH

@@ -1,0 +1,6 @@
+.DS_Store
+.smex-items
+*.dat
+auto-save-list/
+backups/
+*~

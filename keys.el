@@ -1,0 +1,17 @@
+(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>") 'shrink-window)
+(global-set-key (kbd "S-C-<up>") 'enlarge-window)
+
+;;(windmove-default-keybindings)
+(global-set-key (kbd "C-<") 'windmove-left)
+(global-set-key (kbd "C->") 'windmove-right)
+(global-set-key (kbd "C-\"") 'windmove-up)
+(global-set-key (kbd "C-:") 'windmove-down)
+
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
