@@ -24,7 +24,7 @@
 (load "~/.emacs.d/keys.el")
 (load "~/.emacs.d/modes.el")
 (load "~/.emacs.d/variables.el")
-
+(load "~/.emacs.d/elpa/php-mode.el")
 ;; (custom-set-variables
 ;;  '(custom-safe-themes (quote ("e5570dc54a4ba2d8d249779f902f8de1f1a5dacc1a0c3b4c118ba69922195d2a" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
 ;;  '(line-number-mode nil)

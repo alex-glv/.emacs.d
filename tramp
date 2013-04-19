@@ -1,4 +1,4 @@
-;; -*- emacs-lisp -*- <12/12/23 14:38:52 /Users/alexg/.emacs.d/tramp>
+;; -*- emacs-lisp -*- <13/04/19 11:34:49 /Users/alexg/.emacs.d/tramp>
 ;; Tramp connection history.  Don't change this file.
 ;; You can delete it, forcing Tramp to reapply the checks.
 
@@ -38,4 +38,32 @@
   ("remote-decoding" "base64 -d -i")
   ("perl-file-spec" t)
   ("perl-cwd-realpath" t)
-  ("perl" "\\perl")))
+  ("perl" "\\perl"))
+ (["sudo" "root" "PlanetX.local" nil]
+  ("uname" "Darwin 12.2.0")
+  ("test" "test")
+  ("remote-path"
+   ("/usr/bin" "/bin" "/usr/sbin" "/sbin" "/usr/local/bin"))
+  ("remote-shell" "/bin/sh")
+  ("busybox" nil)
+  ("stat" nil)
+  ("perl-file-spec" t)
+  ("perl-cwd-realpath" t)
+  ("perl" "\\perl")
+  ("id" "/usr/bin/id")
+  ("gid-integer" 0)
+  ("file-exists" "test -e")
+  ("ls" "/bin/ls")
+  ("ls-dired" nil)
+  ("readlink" nil)
+  ("uid-integer" 0)
+  ("local-encoding" base64-encode-region)
+  ("local-decoding" base64-decode-region)
+  ("remote-encoding" tramp-perl-encode-with-module)
+  ("remote-decoding" tramp-perl-decode-with-module)
+  ("inline-compress" "gzip")
+  ("inline-decompress" "gzip -d")
+  ("trash" nil)
+  ("~root" "/var/root"))
+ (["scpc" nil "sudo" nil]
+  nil))

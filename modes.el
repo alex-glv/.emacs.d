@@ -1,5 +1,4 @@
 ;; MODES
-(golden-ratio-enable)
 (autoload 'octave-mode "octave-mod" nil t)
 (show-paren-mode 1)
 (global-linum-mode 1)
@@ -63,3 +62,4 @@
       ido-handle-duplicate-virtual-buffers 2
       ido-max-prospects 10)
 
+(ido-ubiquitous t)

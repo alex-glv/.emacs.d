@@ -1,7 +1,11 @@
-(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
-(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
-(global-set-key (kbd "S-C-<down>") 'shrink-window)
-(global-set-key (kbd "S-C-<up>") 'enlarge-window)
+(global-set-key (kbd "S-C-<left>") (lambda () (interactive) (shrink-window-horizontally 30)))
+(global-set-key (kbd "S-C-<right>") (lambda () (interactive) (enlarge-window-horizontally 30)))
+(global-set-key (kbd "S-C-<down>") (lambda () (interactive)(shrink-window 20)))
+(global-set-key (kbd "S-C-<up>") (lambda () (interactive) (enlarge-window 30)))
+(global-set-key (kbd "C-c k") (lambda () (interactive) (helm-ls-git-ls)))
+(global-set-key (kbd "C-c r") (lambda () (interactive) (helm-recentf)))
+
+
 
 ;;(windmove-default-keybindings)
 (global-set-key (kbd "C-<") 'windmove-left)

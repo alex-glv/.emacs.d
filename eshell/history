@@ -12,3 +12,26 @@ echo $PATH
 echo $PATH
 echo $PATH
 echo $PATH
+git clone https://github.com/emacs-helm/helm.git elpa/
+git clone https://github.com/emacs-helm/helm.git
+ls -ltra
+mv helm/ elpa/
+ls -ltra elpa/
+rm -rf helm
+rm -rf elpa/helm
+tar -zxvf elpa/helm-20130312.1129.tar 
+ls -ltra
+mv helm-20130312.1129/ elpa/
+ls -ltra
+cd elpa
+ls -ltra
+rm -rf helm*
+cd ../
+git pull
+git status
+git reset --head
+git reset --hard
+cd .emacs.d/
+ls -ltra
+mv elpa/helm-20130226.1613/ .
+source ~/.bash_profile 
