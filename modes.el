@@ -63,3 +63,9 @@
       ido-max-prospects 10)
 
 (ido-ubiquitous t)
+
+(setq helm-display-function
+      (lambda (buf)
+        (split-window-vertically)
+        (other-window 1)
+        (switch-to-buffer buf)))
