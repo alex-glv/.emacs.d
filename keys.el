@@ -6,8 +6,6 @@
 (global-set-key (kbd "C-c r") (lambda () (interactive) (helm-recentf)))
 
 
-
-;;(windmove-default-keybindings)
 (global-set-key (kbd "C-<") 'windmove-left)
 (global-set-key (kbd "C->") 'windmove-right)
 (global-set-key (kbd "C-\"") 'windmove-up)
@@ -19,3 +17,4 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 ;; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+(global-set-key (kbd "C-x m") 'eshell)
