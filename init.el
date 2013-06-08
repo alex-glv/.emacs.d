@@ -20,12 +20,12 @@
 (require 'dired-details+)
 (require 'helm) 
 (require 'bookmark+)
-(require 'starter-kit-eshell)
+
 (load "~/.emacs.d/keys.el")
 (load "~/.emacs.d/modes.el")
 (load "~/.emacs.d/variables.el")
 (load "~/.emacs.d/elpa/php-mode.el")
-
+(load "~/.emacs.d/starter-kit-eshell.el")
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -51,3 +51,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks"))
+
+;; load path
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
