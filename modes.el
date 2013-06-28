@@ -4,7 +4,15 @@
 (global-linum-mode 1)
 (global-auto-complete-mode 1)
 (ido-mode 1)
-(setq linum-format "%3d  ")
+(setq linum-format (lambda (line)
+  (propertize
+   (format (concat " %"
+                   (number-to-string
+                    (length (number-to-string
+                             (line-number-at-pos (point-max)))))
+                   "d ")
+           line)
+   'face 'linum)))
 (set-default 'imenu-auto-rescan t)
 (menu-bar-mode nil)
 (tool-bar-mode -1)
