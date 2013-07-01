@@ -4,6 +4,7 @@
 (global-set-key (kbd "S-C-<up>") (lambda () (interactive) (enlarge-window 30)))
 (global-set-key (kbd "C-c k") (lambda () (interactive) (helm-ls-git-ls)))
 (global-set-key (kbd "C-c r") (lambda () (interactive) (helm-recentf)))
+(global-set-key (kbd "C-c i") (lambda () (interactive) (helm-imenu)))
 
 
 (global-set-key (kbd "C-<") 'windmove-left)
