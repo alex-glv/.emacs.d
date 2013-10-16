@@ -19,3 +19,13 @@
 ;; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 (global-set-key (kbd "C-x m") 'eshell)
+
+
+;; key bindings
+(add-hook 'helm-gtags-mode-hook
+          '(lambda ()
+              (local-set-key (kbd "M-t") 'helm-gtags-find-tag)
+              (local-set-key (kbd "M-r") 'helm-gtags-find-rtag)
+              (local-set-key (kbd "M-s") 'helm-gtags-find-symbol)
+              (local-set-key (kbd "M-g M-p") 'helm-gtags-parse-file)
+              (local-set-key (kbd "M-,") 'helm-gtags-pop-stack)))
