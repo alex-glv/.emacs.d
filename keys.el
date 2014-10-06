@@ -6,6 +6,7 @@
 (global-set-key (kbd "C-c r") (lambda () (interactive) (helm-recentf)))
 (global-set-key (kbd "C-c i") (lambda () (interactive) (helm-imenu)))
 (global-set-key (kbd "C-c h") (lambda () (interactive) (helm-show-kill-ring)))
+(global-set-key (kbd "C-c s") (lambda () (interactive) (magit-status ".")))
 
 
 (global-set-key (kbd "C-<") 'windmove-left)
