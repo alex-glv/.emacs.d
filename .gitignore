@@ -5,5 +5,4 @@ auto-save-list/
 backups/
 *~
 elpa
-eshell/alias
-eshell/history
+eshell

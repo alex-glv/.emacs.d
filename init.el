@@ -1,4 +1,3 @@
-
 (require 'package)
 
 (add-to-list 'package-archives
@@ -25,16 +24,13 @@
 (load "~/.emacs.d/keys.el")
 (load "~/.emacs.d/modes.el")
 (load "~/.emacs.d/variables.el")
+(load "~/.emacs.d/functions.el")
+(load "~/.emacs.d/hooks.el")
 (load "~/.emacs.d/starter-kit-eshell.el")
-
-(defun disable-magit-highlight-in-buffer () 
-  (face-remap-add-relative 'magit-item-highlight '()))
-(add-hook 'magit-status-mode-hook 'disable-magit-highlight-in-buffer)
 
 (setq mac-command-modifier 'control)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
-
 
 (setq-default display-buffer-reuse-frames t)
 (load-theme 'monokai t)
@@ -45,9 +41,3 @@
  '(bmkp-last-as-first-bookmark-file "bookmarks")
  '(dired-dwim-target t)
  '(linum-format (quote dynamic)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
