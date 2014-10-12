@@ -20,6 +20,8 @@
 (require 'dired-details+)
 (require 'helm) 
 (require 'bookmark+)
+(require 'go-autocomplete)
+(require 'auto-complete-config)
 
 (load "~/.emacs.d/keys.el")
 (load "~/.emacs.d/modes.el")
