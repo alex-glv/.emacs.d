@@ -7,6 +7,7 @@
 (global-set-key (kbd "C-c i") (lambda () (interactive) (helm-imenu)))
 (global-set-key (kbd "C-c h") (lambda () (interactive) (helm-show-kill-ring)))
 (global-set-key (kbd "C-c s") (lambda () (interactive) (magit-status ".")))
+(global-set-key (kbd "C-c j") (lambda () (interactive) (godef-jump (point))))
 
 
 (global-set-key (kbd "C-<") 'windmove-left)
@@ -22,12 +23,3 @@
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 (global-set-key (kbd "C-x m") 'eshell)
 
-
-;; key bindings
-(add-hook 'helm-gtags-mode-hook
-          '(lambda ()
-              (local-set-key (kbd "M-t") 'helm-gtags-find-tag)
-              (local-set-key (kbd "M-r") 'helm-gtags-find-rtag)
-              (local-set-key (kbd "M-s") 'helm-gtags-find-symbol)
-              (local-set-key (kbd "M-g M-p") 'helm-gtags-parse-file)
-              (local-set-key (kbd "M-,") 'helm-gtags-pop-stack)))

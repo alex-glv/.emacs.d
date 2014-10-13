@@ -43,3 +43,6 @@
  '(bmkp-last-as-first-bookmark-file "bookmarks")
  '(dired-dwim-target t)
  '(linum-format (quote dynamic)))
+
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
