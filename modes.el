@@ -71,15 +71,4 @@
         (other-window 1)
         (switch-to-buffer buf)))
 
-(require 'helm-config)
-(require 'helm-gtags)
 
-;;; Enable helm-gtags-mode
-(add-hook 'php-mode-hook 'helm-gtags-mode)
-(add-hook 'ruby-mode-hook 'helm-gtags-mode)
-
-;; customize
-(setq helm-gtags-path-style 'relative)
-(setq helm-gtags-ignore-case t)
-(setq helm-gtags-read-only t)
-(setq helm-gtags-auto-update t)
