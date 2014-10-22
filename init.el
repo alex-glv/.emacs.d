@@ -22,13 +22,14 @@
 (require 'bookmark+)
 (require 'go-autocomplete)
 (require 'auto-complete-config)
+(require 'eshell)
+(require 'em-smart)
 
 (load "~/.emacs.d/keys.el")
 (load "~/.emacs.d/modes.el")
 (load "~/.emacs.d/variables.el")
 (load "~/.emacs.d/functions.el")
 (load "~/.emacs.d/hooks.el")
-(load "~/.emacs.d/starter-kit-eshell.el")
 
 (setq mac-command-modifier 'control)
 (put 'downcase-region 'disabled nil)
@@ -46,3 +47,7 @@
 
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
+(when (memq window-system '(nil))
+  (setq linum-format "%d ")
+  (menu-bar-mode -1))
+

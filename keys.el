@@ -1,7 +1,7 @@
-(global-set-key (kbd "S-C-<left>") (lambda () (interactive) (shrink-window-horizontally 30)))
-(global-set-key (kbd "S-C-<right>") (lambda () (interactive) (enlarge-window-horizontally 30)))
-(global-set-key (kbd "S-C-<down>") (lambda () (interactive)(shrink-window 20)))
-(global-set-key (kbd "S-C-<up>") (lambda () (interactive) (enlarge-window 30)))
+(global-set-key (kbd "C-S-<left>") (lambda () (interactive) (shrink-window-horizontally 15)))
+(global-set-key (kbd "C-S-<right>") (lambda () (interactive) (enlarge-window-horizontally 15)))
+(global-set-key (kbd "C-S-<down>") (lambda () (interactive)(shrink-window 5)))
+(global-set-key (kbd "C-S-<up>") (lambda () (interactive) (enlarge-window 15)))
 (global-set-key (kbd "C-c k") (lambda () (interactive) (helm-ls-git-ls)))
 (global-set-key (kbd "C-c r") (lambda () (interactive) (helm-recentf)))
 (global-set-key (kbd "C-c i") (lambda () (interactive) (helm-imenu)))
@@ -14,10 +14,10 @@
 (global-set-key (kbd "C-~") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
-(global-set-key (kbd "C-<") 'windmove-left)
-(global-set-key (kbd "C->") 'windmove-right)
-(global-set-key (kbd "C-\"") 'windmove-up)
-(global-set-key (kbd "C-:") 'windmove-down)
+(global-set-key (kbd "C-c <left>") 'windmove-left)
+(global-set-key (kbd "C-c <right>") 'windmove-right)
+(global-set-key (kbd "C-c <up>") 'windmove-up)
+(global-set-key (kbd "C-c <down>") 'windmove-down)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
