@@ -40,14 +40,11 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 (put 'erase-buffer 'disabled nil)
 
-(custom-set-variables
- '(bmkp-last-as-first-bookmark-file "bookmarks")
- '(dired-dwim-target t)
- '(linum-format (quote dynamic)))
-
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 (when (memq window-system '(nil))
-  (setq linum-format "%d ")
+  (setq linum-format " %d  ")
   (menu-bar-mode -1))
 
+(custom-set-faces
+ '(mode-line ((t (:background "#000000" :foreground "#F5F5F5" :bfox (:line-width 1 :color "#212121" :style unspecified))))))
