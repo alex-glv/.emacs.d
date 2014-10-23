@@ -5,7 +5,8 @@ auto-save-list/
 backups/
 *~
 elpa
-eshell
+eshell/history
+eshell/lastdir
 url
 places
 tramp

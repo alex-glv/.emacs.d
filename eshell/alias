@@ -1,0 +1,1 @@
+alias drm-all docker rm ${docker ps -aq}
