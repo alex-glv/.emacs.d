@@ -74,3 +74,5 @@
 (setq eshell-smart-space-goes-to-end t)
 (toggle-diredp-find-file-reuse-dir 1)
 (setq dired-dwim-target 1)
+
+(add-to-list 'auto-mode-alist '("Vagrantfile" . ruby-mode))
