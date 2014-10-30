@@ -1,3 +1,4 @@
+
 (require 'package)
 
 (add-to-list 'package-archives
@@ -17,7 +18,6 @@
 (require 'nrepl)
 (require 'framemove)
 (require 'ac-nrepl)
-(require 'dired-details+)
 (require 'helm) 
 (require 'bookmark+)
 (require 'go-autocomplete)
