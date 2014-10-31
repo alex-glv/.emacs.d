@@ -7,6 +7,7 @@
 (global-set-key (kbd "C-c i") (lambda () (interactive) (helm-imenu)))
 (global-set-key (kbd "C-c h") (lambda () (interactive) (helm-show-kill-ring)))
 (global-set-key (kbd "C-c s") (lambda () (interactive) (magit-status ".")))
+(global-set-key (kbd "C-c C-s") (lambda () (interactive) (magit-submodule-update)))
 (global-set-key (kbd "C-c j") (lambda () (interactive) (godef-jump (point))))
 
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
