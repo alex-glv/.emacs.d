@@ -1,4 +1,5 @@
 
+
 (require 'package)
 
 (add-to-list 'package-archives
@@ -15,13 +16,11 @@
 (require 'paredit)
 (require 'rainbow-delimiters)
 (require 'clojure-mode)
-(require 'nrepl)
 (require 'framemove)
-(require 'ac-nrepl)
 (require 'helm) 
 (require 'bookmark+)
-(require 'go-autocomplete)
 (require 'auto-complete-config)
+(require 'go-autocomplete)
 (require 'eshell)
 (require 'em-smart)
 
