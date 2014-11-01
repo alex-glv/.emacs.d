@@ -1,1 +1,4 @@
+alias hlg-ls helm-ls-git-ls
+alias hlg-lf helm-ls-git-list-files
+alias hls helm-ls-git-list-files
 alias drm-all docker rm ${docker ps -aq}
