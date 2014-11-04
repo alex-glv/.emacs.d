@@ -1,4 +1,4 @@
-alias hlg-ls helm-ls-git-ls
-alias hlg-lf helm-ls-git-list-files
-alias hls helm-ls-git-list-files
+alias cd-trmp-sudo cd "/ssh:$1|sudo:$1:$2"
+alias cd-trmp cd "/ssh:$1:$2"
+alias cd-trmp-hp cd "/ssh:$1|ssh:$2:$3"
 alias drm-all docker rm ${docker ps -aq}
