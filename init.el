@@ -19,8 +19,6 @@
 (require 'framemove)
 (require 'helm) 
 (require 'bookmark+)
-(require 'auto-complete-config)
-(require 'go-autocomplete)
 (require 'eshell)
 (require 'em-smart)
 

@@ -3,7 +3,6 @@
 (autoload 'octave-mode "octave-mod" nil t)
 (show-paren-mode 1)
 (global-linum-mode 1)
-(global-auto-complete-mode 1)
 (ido-mode 1)
 ; (setq linum-format "%3d  ")
 (custom-set-variables '(linum-format 'dynamic))
@@ -29,20 +28,7 @@
 (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
 (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
 
-;; NREPL
-(defun set-auto-complete-as-completion-at-point-function ()
-  (setq completion-at-point-functions '(auto-complete)))
-(add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
-(add-hook 'nrepl-mode-hook 'set-auto-complete-as-completion-at-point-function)
-(add-hook 'nrepl-interaction-mode-hook 'set-auto-complete-as-completion-at-point-function)
-
-(defun my-interactive-eval-to-repl (form)
-  (let ((buffer nrepl-nrepl-buffer))
-    (nrepl-send-string form (nrepl-handler buffer) nrepl-buffer-ns)))
-
-(defun my-eval-last-expression-to-repl ()
-  (interactive)
-  (my-interactive-eval-to-repl (nrepl-last-expression)))
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; ibuffer
 (setq ibuffer-saved-filter-groups
