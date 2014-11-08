@@ -28,3 +28,6 @@
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 (global-set-key (kbd "C-x m") 'eshell)
 
+
+(global-set-key (kbd "M-3") (lambda () (interactive) (other-window 1)))
+(global-set-key (kbd "M-2") (lambda () (interactive) (other-window (- 1))))
