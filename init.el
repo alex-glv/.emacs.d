@@ -22,11 +22,11 @@
 (require 'eshell)
 (require 'em-smart)
 
-(load "~/.emacs.d/keys.el")
-(load "~/.emacs.d/modes.el")
-(load "~/.emacs.d/variables.el")
 (load "~/.emacs.d/functions.el")
 (load "~/.emacs.d/hooks.el")
+(load "~/.emacs.d/variables.el")
+(load "~/.emacs.d/keys.el")
+(load "~/.emacs.d/modes.el")
 
 (setq mac-command-modifier 'control)
 (put 'downcase-region 'disabled nil)

@@ -33,3 +33,5 @@
 
 (global-set-key (kbd "M-]") (lambda () (interactive) (other-window 1)))
 (global-set-key (kbd "M-[") (lambda () (interactive) (other-window (- 1))))
+
+(global-set-key (kbd "C-c C-e") 'eshell-named)

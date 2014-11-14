@@ -8,3 +8,12 @@
     (if (eq crnt-value nil)
 	(setq dired-dwim-target t)
       (setq dired-dwim-target nil))))
+
+(defun eshell-named (buffer-title)
+  (interactive "MEnter buffer name: ")
+  (let ((buf (get-buffer-create (format "%s" buffer-title))))
+    (cl-assert (and buf (buffer-live-p buf)))
+    (pop-to-buffer-same-window buf)
+    (unless (derived-mode-p 'eshell-mode)
+      (eshell-mode))
+    buf))
