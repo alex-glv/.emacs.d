@@ -25,9 +25,6 @@
 
 (add-hook 'emacs-lisp-mode-hook 'clj-hooks)
 (add-hook 'clojure-mode-hook 'clj-hooks)
-(add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
-(add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
-
 (add-hook 'after-init-hook 'global-company-mode)
 
 ;; ibuffer
