@@ -2,3 +2,5 @@
 (add-hook 'before-save-hook 'gofmt-before-save)
 (add-hook 'markdown-mode-hook 'turn-on-orgtbl)
 (add-hook 'eshell-mode-hook 'eshell-smart-initialize)
+(add-hook 'magit-pull-hook (lambda ()
+			     (magit-run-git "stash" "save" magit-custom-options "--" "pull-stash-apply-me")))
