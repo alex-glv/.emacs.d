@@ -11,9 +11,10 @@
 
 (defun eshell-named (buffer-title)
   (interactive "MEnter buffer name: ")
-  (let ((buf (get-buffer-create (format "*esh|%s*" buffer-title))))
+  (let ((buf (get-buffer-create (format "*%s-eshell*" buffer-title))))
     (cl-assert (and buf (buffer-live-p buf)))
-    (pop-to-buffer-same-window buf)
+    (split-window-vertically 10)
+    (switch-to-buffer buf)
     (unless (derived-mode-p 'eshell-mode)
       (eshell-mode))
     buf))
