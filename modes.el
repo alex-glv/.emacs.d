@@ -59,3 +59,6 @@
 (setq dired-dwim-target 1)
 
 (add-to-list 'auto-mode-alist '("Vagrantfile" . ruby-mode))
+
+(elpy-enable)
+(setq elpy-rpc-backend "jedi")
