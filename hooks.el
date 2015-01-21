@@ -4,3 +4,4 @@
 (add-hook 'eshell-mode-hook 'eshell-smart-initialize)
 (add-hook 'magit-pull-hook (lambda ()
 			     (magit-run-git "stash" "save" magit-custom-options "--" "pull-stash-apply-me")))
+(add-hook 'js-mode-hook (lambda () (tern-mode t)))
