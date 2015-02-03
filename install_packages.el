@@ -17,8 +17,9 @@
 		      smex
 		      bookmark+
 		      ido-ubiquitous
-		      php-mode
+		      web-mode
 		      virtualenv
+		      php+-mode
 		      helm-ls-git
 		      zenburn-theme
 		      go-mode
@@ -28,8 +29,10 @@
 		      apache-mode
 		      dockerfile-mode
 		      js2-mode
-		      web-mode)
-
+		      yasnippet
+		      elpy
+		      tern
+		      company-tern)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)

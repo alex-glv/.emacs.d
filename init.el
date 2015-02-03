@@ -23,7 +23,7 @@
 (put 'upcase-region 'disabled nil)
 
 (setq-default display-buffer-reuse-frames t)
-(load-theme 'monokai t)
+(load-theme 'zenburn t)
 (defalias 'yes-or-no-p 'y-or-n-p)
 (put 'erase-buffer 'disabled nil)
 
@@ -45,4 +45,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
+ '(custom-safe-themes
+   (quote
+    ("9dae95cdbed1505d45322ef8b5aa90ccb6cb59e0ff26fef0b8f411dfc416c552" default)))
  '(linum-format (quote dynamic)))

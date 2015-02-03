@@ -1,4 +1,5 @@
 (require 'dired+)
+(require 'web-mode)
 ;; MODES
 (autoload 'octave-mode "octave-mod" nil t)
 (show-paren-mode 1)
@@ -60,6 +61,10 @@
 
 (add-to-list 'auto-mode-alist '("Vagrantfile" . ruby-mode))
 
+(elpy-enable)
+(setq elpy-rpc-backend "jedi")
+
+(require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
@@ -67,29 +72,10 @@
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-
-(eval-after-load 'js2-mode
-  '(progn
-     (require 'js2-imenu-extras)
-
-     ;; The code to record the class is identical to that for
-     ;; Backbone so we just make an alias
-     (defalias 'js2-imenu-record-react-class
-       'js2-imenu-record-backbone-extend)
-
-     (unless (loop for entry in js2-imenu-extension-styles
-                   thereis (eq (plist-get entry :framework) 'react))
-       (push '(:framework react
-               :call-re "\\_<React\\.createClass\\s-*("
-               :recorder js2-imenu-record-react-class)
-             js2-imenu-extension-styles))
-
-     (add-to-list 'js2-imenu-available-frameworks 'react)
-     (add-to-list 'js2-imenu-enabled-frameworks 'react)))
 
 (defun modify-syntax-table-for-jsx ()
   (modify-syntax-entry ?< "(>")
   (modify-syntax-entry ?> ")<"))
 
 (add-hook 'js2-mode-hook 'modify-syntax-table-for-jsx)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
