@@ -18,3 +18,7 @@
     (unless (derived-mode-p 'eshell-mode)
       (eshell-mode))
     buf))
+
+(defun modify-syntax-table-for-jsx ()
+  (modify-syntax-entry ?< "(>")
+  (modify-syntax-entry ?> ")<"))

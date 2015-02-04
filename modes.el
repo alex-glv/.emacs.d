@@ -64,7 +64,6 @@
 (elpy-enable)
 (setq elpy-rpc-backend "jedi")
 
-(require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
@@ -72,20 +71,20 @@
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-
-(defun modify-syntax-table-for-jsx ()
-  (modify-syntax-entry ?< "(>")
-  (modify-syntax-entry ?> ")<"))
-
-(add-hook 'js2-mode-hook 'modify-syntax-table-for-jsx)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
-(defun sm-greek-lambda ()
-       (font-lock-add-keywords nil `(("\\<function\\>"
-           (0 (progn (compose-region (match-beginning 0) (match-end 0)
-           ,(make-char 'greek-iso8859-7 107))
-		     nil))))))
+(add-hook 'js2-mode-hook 'modify-syntax-table-for-jsx)
 
-(add-hook 'emacs-lisp-mode-hook 'sm-greek-lambda)
-(add-hook 'php-mode-hook 'sm-greek-lambda)
-(add-hook 'js2-mode-hook 'sm-greek-lambda)
+(nyan-mode)
+
+(global-prettify-symbols-mode t)
+
+(defun pretty-mode-list ()
+  (setq prettify-symbols-alist '(("lambda"  . ?λ)
+				 ("function" . ?ƒ))))
+
+(add-hook 'js2-mode-hook 'pretty-mode-list)
+(add-hook 'php-mode-hook 'pretty-mode-list)
+
+
