@@ -79,3 +79,13 @@
 
 (add-hook 'js2-mode-hook 'modify-syntax-table-for-jsx)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+(defun sm-greek-lambda ()
+       (font-lock-add-keywords nil `(("\\<function\\>"
+           (0 (progn (compose-region (match-beginning 0) (match-end 0)
+           ,(make-char 'greek-iso8859-7 107))
+		     nil))))))
+
+(add-hook 'emacs-lisp-mode-hook 'sm-greek-lambda)
+(add-hook 'php-mode-hook 'sm-greek-lambda)
+(add-hook 'js2-mode-hook 'sm-greek-lambda)
