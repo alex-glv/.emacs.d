@@ -84,7 +84,10 @@
   (setq prettify-symbols-alist '(("lambda"  . ?λ)
 				 ("function" . ?ƒ))))
 
-(add-hook 'js2-mode-hook 'pretty-mode-list)
+(add-hook 'js2-mode-hook
+	  (lambda ()
+	    (pretty-mode-list)
+	    (set-variable 'js2-indent-switch-body t)))
+(add-to-list 'company-backends 'company-tern)
+
 (add-hook 'php-mode-hook 'pretty-mode-list)
-
-
