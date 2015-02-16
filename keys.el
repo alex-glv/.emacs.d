@@ -9,6 +9,7 @@
 (global-set-key (kbd "C-c s") (lambda () (interactive) (magit-status ".")))
 (global-set-key (kbd "C-c C-s") (lambda () (interactive) (magit-submodule-update)))
 (global-set-key (kbd "C-c j") (lambda () (interactive) (godef-jump (point))))
+(global-set-key (kbd "C-x o") 'ace-window)
 
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C-!") 'mc/mark-next-like-this)

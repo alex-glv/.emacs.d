@@ -89,5 +89,6 @@
 	    (pretty-mode-list)
 	    (set-variable 'js2-indent-switch-body t)))
 (add-to-list 'company-backends 'company-tern)
-
 (add-hook 'php-mode-hook 'pretty-mode-list)
+
+(setq aw-keys '(?a ?o ?e ?u ?h ?t ?n ?s ?g))

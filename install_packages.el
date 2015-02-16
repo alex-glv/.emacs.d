@@ -32,7 +32,8 @@
 		      yasnippet
 		      elpy
 		      tern
-		      company-tern)
+		      company-tern
+		      ace-window)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
