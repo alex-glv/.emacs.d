@@ -92,3 +92,6 @@
 (add-hook 'php-mode-hook 'pretty-mode-list)
 
 (setq aw-keys '(?a ?o ?e ?u ?h ?t ?n ?s ?g))
+
+(add-to-list 'display-buffer-alist
+	     '("\\*HTTP Response\\*" . (display-buffer-below-selected nil)))
