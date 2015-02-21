@@ -1,3 +1,5 @@
+(require 'cl)
+
 (defun disable-magit-highlight-in-buffer () 
   (face-remap-add-relative 'magit-item-highlight '()))
 
@@ -22,3 +24,24 @@
 (defun modify-syntax-table-for-jsx ()
   (modify-syntax-entry ?< "(>")
   (modify-syntax-entry ?> ")<"))
+
+(defun get-mm-rules-list (mm-list result-list)
+       (if mm-list
+	 (let* ((cur-mm (car mm-list))
+		(next-res-list-el `(,(symbol-name cur-mm) (mode . ,cur-mm))))
+	   (get-mm-rules-list (cdr mm-list) (cons next-res-list-el result-list)))
+	 result-list))
+
+(defun get-buff-major-m-list ()
+  (mapcar
+   (function (lambda (buffer) (buffer-local-value 'major-mode (get-buffer buffer))))
+   (buffer-list (selected-frame))))
+
+
+(defun create-buffs-group ()
+  (interactive)
+  (let* ((cur-bufs (list (cons "Home"
+			       (get-mm-rules-list
+				(remove-duplicates (get-buff-major-m-list)) '())))))
+    (setq ibuffer-saved-filter-groups cur-bufs)
+    (ibuffer-switch-to-saved-filter-groups "Home")))
