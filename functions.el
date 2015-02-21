@@ -37,11 +37,12 @@
    (function (lambda (buffer) (buffer-local-value 'major-mode (get-buffer buffer))))
    (buffer-list (selected-frame))))
 
-
 (defun create-buffs-group ()
   (interactive)
-  (let* ((cur-bufs (list (cons "Home"
+  (let* ((ignore-modes '(Buffer-menu-mode compilation-mode minibuffer-inactive-mode ibuffer-mode magit-process-mode messages-buffer-mode fundamental-mode))
+	 (cur-bufs (list (cons "Home"
 			       (get-mm-rules-list
-				(remove-duplicates (get-buff-major-m-list)) '())))))
+				(cl-set-difference 
+				 (remove-duplicates (get-buff-major-m-list)) ignore-modes) '())))))
     (setq ibuffer-saved-filter-groups cur-bufs)
     (ibuffer-switch-to-saved-filter-groups "Home")))
