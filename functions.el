@@ -25,14 +25,14 @@
   (modify-syntax-entry ?< "(>")
   (modify-syntax-entry ?> ")<"))
 
-(defun get-mm-rules-list (mm-list result-list)
+(defun get-major-modes-ibuff-rules-list (mm-list result-list)
        (if mm-list
 	 (let* ((cur-mm (car mm-list))
 		(next-res-list-el `(,(symbol-name cur-mm) (mode . ,cur-mm))))
-	   (get-mm-rules-list (cdr mm-list) (cons next-res-list-el result-list)))
+	   (get-major-modes-ibuff-rules-list (cdr mm-list) (cons next-res-list-el result-list)))
 	 result-list))
 
-(defun get-buff-major-m-list ()
+(defun get-major-modes-list ()
   (mapcar
    (function (lambda (buffer) (buffer-local-value 'major-mode (get-buffer buffer))))
    (buffer-list (selected-frame))))
@@ -41,8 +41,8 @@
   (interactive)
   (let* ((ignore-modes '(Buffer-menu-mode compilation-mode minibuffer-inactive-mode ibuffer-mode magit-process-mode messages-buffer-mode fundamental-mode))
 	 (cur-bufs (list (cons "Home"
-			       (get-mm-rules-list
+			       (get-major-modes-ibuff-rules-list
 				(cl-set-difference 
-				 (remove-duplicates (get-buff-major-m-list)) ignore-modes) '())))))
+				 (remove-duplicates (get-major-modes-list)) ignore-modes) '())))))
     (setq ibuffer-saved-filter-groups cur-bufs)
     (ibuffer-switch-to-saved-filter-groups "Home")))
