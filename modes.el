@@ -93,5 +93,9 @@
 
 (setq aw-keys '(?a ?o ?e ?u ?h ?t ?n ?s ?g))
 
+(setq display-buffer-alist nil)
 (add-to-list 'display-buffer-alist
-	     '("\\*HTTP Response\\*" . (display-buffer-below-selected nil)))
+	     '("\\*HTTP Response\\*" . (display-buffer-below-selected . nil)))
+(add-to-list 'display-buffer-alist
+	     '("\\*nodejs\\*" . (display-buffer-same-window . ((inhibit-same-window . nil)))))
+
