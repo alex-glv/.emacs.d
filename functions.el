@@ -39,7 +39,16 @@
 
 (defun create-buffs-group ()
   (interactive)
-  (let* ((ignore-modes '(Buffer-menu-mode compilation-mode minibuffer-inactive-mode ibuffer-mode magit-process-mode messages-buffer-mode fundamental-mode))
+  (let* ((ignore-modes '(Buffer-menu-mode
+			 compilation-mode
+			 minibuffer-inactive-mode
+			 ibuffer-mode
+			 magit-process-mode
+			 messages-buffer-mode
+			 fundamental-mode
+			 completion-list-mode
+			 help-mode
+			 Info-mode))
 	 (cur-bufs (list (cons "Home"
 			       (get-major-modes-ibuff-rules-list
 				(cl-set-difference 
