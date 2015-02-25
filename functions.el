@@ -55,3 +55,5 @@
 				 (remove-duplicates (get-major-modes-list)) ignore-modes) '())))))
     (setq ibuffer-saved-filter-groups cur-bufs)
     (ibuffer-switch-to-saved-filter-groups "Home")))
+
+(defun get-cur-remote () (replace-regexp-in-string "\\(/.*?:/\\).*" "\\1" (thing-at-point 'line)))
