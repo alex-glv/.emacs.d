@@ -11,8 +11,15 @@
 	(setq dired-dwim-target t)
       (setq dired-dwim-target nil))))
 
-(defun eshell-named (buffer-title)
-  (interactive "MEnter buffer name: ")
+(defun eshell-named (&optional buffer-title)
+  (interactive
+   (cond ((equal current-prefix-arg '(4))
+	  (list (read-string "Buffer title: " nil nil "...")))
+	 (t
+	  (list (apply 'concat
+			(mapcar (lambda (char)
+				  (replace-regexp-in-string "[^\\.a-z]" "-" (string char)))
+				(buffer-name)))))))
   (let ((buf (get-buffer-create (format "*%s-eshell*" buffer-title))))
     (cl-assert (and buf (buffer-live-p buf)))
     (split-window-vertically 10)
