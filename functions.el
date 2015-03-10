@@ -11,7 +11,7 @@
 	(setq dired-dwim-target t)
       (setq dired-dwim-target nil))))
 
-(defun eshell-named (&optional buffer-title)
+(defun eshell-named (buffer-title)
   (interactive
    (cond ((equal current-prefix-arg '(4))
 	  (list (read-string "Buffer title: " nil nil "...")))
@@ -63,4 +63,6 @@
     (setq ibuffer-saved-filter-groups cur-bufs)
     (ibuffer-switch-to-saved-filter-groups "Home")))
 
-(defun get-cur-remote () (replace-regexp-in-string "\\(/.*?:/\\).*" "\\1" (thing-at-point 'line)))
+(defun get-cur-remote () (replace-regexp-in-string ".*\\(/.*?:/\\).*" "\\1" (thing-at-point 'line)))
+
+
