@@ -2,7 +2,8 @@
   (package-refresh-contents))
 
 ;; Add in your own as you wish:
-(defvar my-packages '(paredit
+(defvar my-packages '(smartparens
+		      paredit
 		      rainbow-delimiters
 		      clojure-mode
 		      cider
@@ -33,7 +34,8 @@
 		      elpy
 		      tern
 		      company-tern
-		      ace-window)
+		      ace-window
+		      undo-tree)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)

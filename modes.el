@@ -21,7 +21,6 @@
 ;; HOOKS
 (defun clj-hooks ()
   	    (rainbow-delimiters-mode)
-	    (enable-paredit-mode)
             (eldoc-mode))
 
 (add-hook 'emacs-lisp-mode-hook 'clj-hooks)

@@ -10,6 +10,11 @@
 
 (package-initialize)
 
+(setq settings-dir
+      (concat user-emacs-directory "/settings/"))
+
+(add-to-list 'load-path settings-dir)
+
 (load "~/.emacs.d/install_packages.el")
 (load "~/.emacs.d/modes.el")
 (load "~/.emacs.d/functions.el")
@@ -17,15 +22,13 @@
 (load "~/.emacs.d/variables.el")
 (load "~/.emacs.d/hooks.el")
 
-(global-company-mode)
-(setq mac-command-modifier 'control)
-(put 'downcase-region 'disabled nil)
-(put 'upcase-region 'disabled nil)
+(require 'cust-defaults)
 
-(setq-default display-buffer-reuse-frames t)
+(smartparens-global-mode t)
+(global-company-mode)
+(global-undo-tree-mode)
+
 (load-theme 'zenburn t)
-(defalias 'yes-or-no-p 'y-or-n-p)
-(put 'erase-buffer 'disabled nil)
 
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
@@ -35,5 +38,3 @@
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
-
-
