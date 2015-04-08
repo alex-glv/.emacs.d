@@ -12,3 +12,5 @@ places
 tramp
 backups
 repl-port
+.#*
+session.*
