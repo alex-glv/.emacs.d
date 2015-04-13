@@ -24,10 +24,8 @@
 
 (require 'cust-defaults)
 
-(smartparens-global-mode t)
 (global-company-mode)
 (global-undo-tree-mode)
-
 (load-theme 'zenburn t)
 
 (when (memq window-system '(mac ns))
