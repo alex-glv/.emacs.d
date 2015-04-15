@@ -29,5 +29,8 @@
 (sp-with-modes sp--lisp-modes
   (sp-local-pair "(" nil :bind "C-("))
 
+(require 'tramp)
+
+(add-to-list 'tramp-remote-path "/usr/local/bin/")
 
 (provide 'cust-defaults)

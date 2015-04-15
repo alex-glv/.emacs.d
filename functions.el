@@ -24,6 +24,7 @@
     (cl-assert (and buf (buffer-live-p buf)))
     (split-window-vertically 10)
     (switch-to-buffer buf)
+    ;; todo: make sure CD is executed once the buffer is active, so PATH handlers and middleware is run
     (unless (derived-mode-p 'eshell-mode)
       (eshell-mode))
     buf))
