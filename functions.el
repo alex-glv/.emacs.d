@@ -26,7 +26,8 @@
     (switch-to-buffer buf)
     ;; todo: make sure CD is executed once the buffer is active, so PATH handlers and middleware is run
     (unless (derived-mode-p 'eshell-mode)
-      (eshell-mode))
+      (eshell-mode)
+      (eshell/cd (eshell/pwd)))
     buf))
 
 (defun modify-syntax-table-for-jsx ()
