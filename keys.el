@@ -1,3 +1,6 @@
+(setq mac-option-modifier 'meta)
+(setq mac-command-modifier 'super)
+
 (global-set-key (kbd "C-S-<left>") (lambda () (interactive) (shrink-window-horizontally 15)))
 (global-set-key (kbd "C-S-<right>") (lambda () (interactive) (enlarge-window-horizontally 15)))
 (global-set-key (kbd "C-S-<down>") (lambda () (interactive)(shrink-window 5)))
