@@ -1,5 +1,13 @@
-(setq mac-option-modifier 'meta)
-(setq mac-command-modifier 'super)
+(require 'smartparens)
+
+(eval-after-load 'company
+  '(progn
+     (define-key company-active-map (kbd "TAB") 'company-select-next)
+     (define-key company-active-map [tab] 'company-select-next)))
+
+(global-set-key (kbd "C-w") 'backward-kill-word)
+(global-set-key (kbd "C-.") 'backward-kill-word)
+(global-set-key (kbd "C-c C-k") 'kill-region)
 
 (global-set-key (kbd "C-S-<left>") (lambda () (interactive) (shrink-window-horizontally 15)))
 (global-set-key (kbd "C-S-<right>") (lambda () (interactive) (enlarge-window-horizontally 15)))
@@ -13,7 +21,7 @@
 (global-set-key (kbd "C-c C-s") (lambda () (interactive) (magit-submodule-update)))
 (global-set-key (kbd "C-c j") (lambda () (interactive) (godef-jump (point))))
 (global-set-key (kbd "C-x o") 'ace-window)
-(global-set-key (kbd "M-p") 'ace-jump-mode)
+(global-set-key (kbd "s-p ") 'ace-delete-window)
 
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C-!") 'mc/mark-next-like-this)
@@ -25,8 +33,8 @@
 (global-set-key (kbd "C-c <up>") 'windmove-up)
 (global-set-key (kbd "C-c <down>") 'windmove-down)
 
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key (kbd "C-c e") 'helm-eshell-history)
+(global-set-key (kbd "C-x C-b") 'ibuffer
+		(global-set-key (kbd "C-c e") 'helm-eshell-history))
 
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
@@ -63,10 +71,10 @@
 (define-key sp-keymap (kbd "M-<delete>") 'sp-unwrap-sexp)
 (define-key sp-keymap (kbd "M-<backspace>") 'sp-backward-unwrap-sexp)
 
-(define-key sp-keymap (kbd "C-<right>") 'sp-forward-slurp-sexp)
-(define-key sp-keymap (kbd "C-<left>") 'sp-forward-barf-sexp)
-(define-key sp-keymap (kbd "C-M-<left>") 'sp-backward-slurp-sexp)
-(define-key sp-keymap (kbd "C-M-<right>") 'sp-backward-barf-sexp)
+(define-key sp-keymap (kbd "C-M-}") 'sp-forward-slurp-sexp)
+(define-key sp-keymap (kbd "C-M-(") 'sp-forward-barf-sexp)
+(define-key sp-keymap (kbd "C-M-{") 'sp-backward-slurp-sexp)
+(define-key sp-keymap (kbd "C-M-)") 'sp-backward-barf-sexp)
 
 (define-key sp-keymap (kbd "M-D") 'sp-splice-sexp)
 (define-key sp-keymap (kbd "C-M-<delete>") 'sp-splice-sexp-killing-forward)
@@ -80,12 +88,12 @@
 (define-key sp-keymap (kbd "M-F") 'sp-forward-symbol)
 (define-key sp-keymap (kbd "M-B") 'sp-backward-symbol)
 
-(define-key sp-keymap (kbd "H-t") 'sp-prefix-tag-object)
-(define-key sp-keymap (kbd "H-p") 'sp-prefix-pair-object)
-(define-key sp-keymap (kbd "H-s c") 'sp-convolute-sexp)
-(define-key sp-keymap (kbd "H-s a") 'sp-absorb-sexp)
-(define-key sp-keymap (kbd "H-s e") 'sp-emit-sexp)
-(define-key sp-keymap (kbd "H-s p") 'sp-add-to-previous-sexp)
-(define-key sp-keymap (kbd "H-s n") 'sp-add-to-next-sexp)
-(define-key sp-keymap (kbd "H-s j") 'sp-join-sexp)
-(define-key sp-keymap (kbd "H-s s") 'sp-split-sexp)
+(define-key sp-keymap (kbd "s-t") 'sp-prefix-tag-object)
+(define-key sp-keymap (kbd "s-p") 'sp-prefix-pair-object)
+(define-key sp-keymap (kbd "s-c") 'sp-convolute-sexp)
+(define-key sp-keymap (kbd "s-a") 'sp-absorb-sexp)
+(define-key sp-keymap (kbd "s-e") 'sp-emit-sexp)
+(define-key sp-keymap (kbd "s-p") 'sp-add-to-previous-sexp)
+(define-key sp-keymap (kbd "s-n") 'sp-add-to-next-sexp)
+(define-key sp-keymap (kbd "s-j") 'sp-join-sexp)
+(define-key sp-keymap (kbd "s-s") 'sp-split-sexp)

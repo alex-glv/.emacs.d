@@ -1,6 +1,7 @@
 (require 'dired+)
 (require 'web-mode)
 ;; MODES
+(smartparens-global-strict-mode)
 (autoload 'octave-mode "octave-mod" nil t)
 (show-paren-mode 1)
 (global-linum-mode 1)

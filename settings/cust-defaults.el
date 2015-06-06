@@ -4,6 +4,11 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 (put 'erase-buffer 'disabled nil)
 
+(setq mac-control-modifier 'control)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier 'hyper)
+(setq mac-right-command-modifier 'super)
+
 (require 'smartparens-config)
 (smartparens-global-mode t)
 
