@@ -35,7 +35,8 @@
 		      tern
 		      company-tern
 		      ace-window
-		      undo-tree)
+		      undo-tree
+		      ace-jump-buffer)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)

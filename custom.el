@@ -10,7 +10,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
+ '(cursor-type (quote bar))
  '(custom-safe-themes
    (quote
     ("9dae95cdbed1505d45322ef8b5aa90ccb6cb59e0ff26fef0b8f411dfc416c552" default)))
+ '(helm-buffer-skip-remote-checking t)
  '(linum-format (quote dynamic)))

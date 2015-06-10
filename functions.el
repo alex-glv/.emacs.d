@@ -11,6 +11,13 @@
 	(setq dired-dwim-target t)
       (setq dired-dwim-target nil))))
 
+(defun set-env-from-json (file)
+    (require 'json)
+    (let ((json-env (json-read-file file)))
+      (mapc (lambda (element)
+              (setenv  (format "%s" (car element)) (format "%s" (cdr element)))
+              ) json-env )))
+
 (defun eshell-named (buffer-title)
   (interactive
    (cond ((equal current-prefix-arg '(4))

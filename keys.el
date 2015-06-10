@@ -1,4 +1,5 @@
 (require 'smartparens)
+(require 'ace-window)
 
 (eval-after-load 'company
   '(progn
@@ -16,15 +17,25 @@
 
 (global-set-key (kbd "s-SPC h g") (lambda () (interactive) (helm-ls-git-ls)))
 (global-set-key (kbd "s-SPC h r") (lambda () (interactive) (helm-recentf)))
-(global-set-key (kbd "s-SPC h i") (lambda () (interactive) (helm-imenu)))
-(global-set-key (kbd "s-SPC h h") (lambda () (interactive) (helm-show-kill-ring)))
+(global-set-key (kbd "s-SPC r h") (lambda () (interactive) (helm-show-kill-ring)))
 (global-set-key (kbd "s-SPC h e") 'helm-eshell-history)
 (global-set-key (kbd "s-SPC g s") (lambda () (interactive) (magit-status ".")))
 (global-set-key (kbd "s-SPC g m") (lambda () (interactive) (magit-submodule-update)))
 
-(global-set-key (kbd "s-SPC w o") 'ace-window)
-(global-set-key (kbd "s-SPC w k") 'ace-delete-window)
-(global-set-key (kbd "s-SPC s e") 'eshell-named)
+(global-set-key (kbd "s-SPC h B") 'ibuffer)
+(global-set-key (kbd "s-SPC h h") 'helm-buffers-list)
+
+;; window management
+(eval-after-load 'ace-window
+  '(progn
+     (global-set-key (kbd "s-SPC c o") 'ace-window)
+     (global-set-key (kbd "s-SPC c k") 'ace-delete-window)
+     (global-set-key (kbd "s-SPC c c") 'ace-jump-char-mode)
+     (global-set-key (kbd "s-SPC c l") 'ace-jump-line-mode)
+     (global-set-key (kbd "s-SPC c u") 'winner-undo)
+     (global-set-key (kbd "s-SPC c k") 'kill-buffer)
+     (global-set-key (kbd "s-SPC c j") 'ibuffer-jump-to-buffer)
+     ))
 
 (define-key sp-keymap (kbd "s-SPC l t") 'sp-prefix-tag-object)
 (define-key sp-keymap (kbd "s-SPC l p") 'sp-prefix-pair-object)
@@ -36,20 +47,22 @@
 (define-key sp-keymap (kbd "s-SPC l j") 'sp-join-sexp)
 (define-key sp-keymap (kbd "s-SPC l s") 'sp-split-sexp)
 
-(global-set-key (kbd "C-c j") (lambda () (interactive) (godef-jump (point))))
-(global-set-key (kbd "s-SPC t k") 'kill-region)
-(global-set-key (kbd "s-SPC x m") 'mc/mark-next-like-this)
-(global-set-key (kbd "s-SPC x M") 'mc/mark-previous-like-this)
+(global-set-key (kbd "s-SPC a d") 'dired)
+(global-set-key (kbd "s-SPC a e") 'eshell-named)
+
+(global-set-key (kbd "s-SPC x k") 'kill-region)
+(global-set-key (kbd "s-SPC x n") 'mc/mark-next-like-this)
+(global-set-key (kbd "s-SPC x p") 'mc/mark-previous-like-this)
 (global-set-key (kbd "s-SPC x a") 'mc/mark-all-like-this)
+(global-set-key (kbd "s-SPC x w") 'mc/mark-all-words-like-this)
 (global-set-key (kbd "s-SPC x r") 'mc/mark-all-in-region)
+
+(global-set-key (kbd "s-SPC b t") 'toggle-truncate-lines)
 
 (global-set-key (kbd "C-c <left>") 'windmove-left)
 (global-set-key (kbd "C-c <right>") 'windmove-right)
 (global-set-key (kbd "C-c <up>") 'windmove-up)
 (global-set-key (kbd "C-c <down>") 'windmove-down)
-
-(global-set-key (kbd "s-SPC b b") 'ibuffer)
-(global-set-key (kbd "s-SPC b h") 'helm-buffers-list)
 
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
@@ -97,3 +110,5 @@
 
 (define-key sp-keymap (kbd "M-F") 'sp-forward-symbol)
 (define-key sp-keymap (kbd "M-B") 'sp-backward-symbol)
+
+(global-set-key (kbd "C-c j") (lambda () (interactive) (godef-jump (point))))
