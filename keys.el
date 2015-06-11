@@ -22,20 +22,22 @@
 (global-set-key (kbd "s-SPC g s") (lambda () (interactive) (magit-status ".")))
 (global-set-key (kbd "s-SPC g m") (lambda () (interactive) (magit-submodule-update)))
 
-(global-set-key (kbd "s-SPC h B") 'ibuffer)
+(global-set-key (kbd "s-SPC h b") 'ibuffer)
 (global-set-key (kbd "s-SPC h h") 'helm-buffers-list)
 
 ;; window management
 (eval-after-load 'ace-window
   '(progn
      (global-set-key (kbd "s-SPC c o") 'ace-window)
-     (global-set-key (kbd "s-SPC c k") 'ace-delete-window)
+     (global-set-key (kbd "s-SPC c w") 'ace-delete-window)
      (global-set-key (kbd "s-SPC c c") 'ace-jump-char-mode)
      (global-set-key (kbd "s-SPC c l") 'ace-jump-line-mode)
      (global-set-key (kbd "s-SPC c u") 'winner-undo)
      (global-set-key (kbd "s-SPC c k") 'kill-buffer)
      (global-set-key (kbd "s-SPC c j") 'ibuffer-jump-to-buffer)
      ))
+
+(global-set-key (kbd "s-SPC f f") 'ido-find-file)
 
 (define-key sp-keymap (kbd "s-SPC l t") 'sp-prefix-tag-object)
 (define-key sp-keymap (kbd "s-SPC l p") 'sp-prefix-pair-object)

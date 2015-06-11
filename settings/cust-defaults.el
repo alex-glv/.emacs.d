@@ -9,6 +9,8 @@
 (setq mac-option-modifier 'hyper)
 (setq mac-right-command-modifier 'super)
 
+(scroll-bar-mode nil)
+
 (require 'smartparens-config)
 (smartparens-global-mode t)
 
