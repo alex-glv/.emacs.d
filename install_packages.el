@@ -2,7 +2,10 @@
   (package-refresh-contents))
 
 ;; Add in your own as you wish:
-(defvar my-packages '(smartparens
+(defvar my-packages '(avy
+		      swiper
+		      ace-window
+		      smartparens
 		      paredit
 		      rainbow-delimiters
 		      clojure-mode
@@ -34,9 +37,12 @@
 		      elpy
 		      tern
 		      company-tern
-		      ace-window
+		      markdown-mode+
+		      groovy-mode
+		      golden-ratio
+		      projectile
 		      undo-tree
-		      ace-jump-buffer)
+		      )
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)

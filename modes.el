@@ -1,6 +1,25 @@
 (require 'dired+)
 (require 'web-mode)
+(require 'ivy)
+(require 'ace-window)
 ;; MODES
+(ivy-mode t)
+(ivy-toggle-fuzzy)
+
+(setq avy-keys '(?a ?o ?e ?u ?h ?t ?n ?s))
+(setq aw-keys '(?a ?o ?e ?u ?h ?t ?n ?s))
+
+(setq ivy-format-function (lambda (cands) 
+			    (let ((i -1))
+			      (mapconcat
+			       (lambda (s)
+				 (concat (if (eq (cl-incf i) ivy--index)
+					     "> "
+					   "  ")
+					 s))
+			       cands "\n"))))
+
+(setq projectile-completion-system 'ivy)
 (smartparens-global-strict-mode)
 (autoload 'octave-mode "octave-mod" nil t)
 (show-paren-mode 1)
@@ -27,6 +46,8 @@
 (add-hook 'emacs-lisp-mode-hook 'clj-hooks)
 (add-hook 'clojure-mode-hook 'clj-hooks)
 (add-hook 'after-init-hook 'global-company-mode)
+
+(winner-mode)
 
 ;; ibuffer
 (setq ibuffer-saved-filter-groups
@@ -57,7 +78,7 @@
 (setq eshell-review-quick-commands nil)
 (setq eshell-smart-space-goes-to-end t)
 (toggle-diredp-find-file-reuse-dir 1)
-(setq dired-dwim-target 1)
+(setq dired-dwim-target t)
 
 (add-to-list 'auto-mode-alist '("Vagrantfile" . ruby-mode))
 
@@ -99,3 +120,6 @@
 (add-to-list 'display-buffer-alist
 	     '("\\*nodejs\\*" . (display-buffer-same-window . ((inhibit-same-window . nil)))))
 
+
+(add-to-list 'auto-mode-alist '("\\.gradle\\'" . groovy-mode))
+(add-to-list 'auto-mode-alist '("\\*cider-scratch*\\'" . clojure-mode))

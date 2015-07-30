@@ -18,6 +18,12 @@
               (setenv  (format "%s" (car element)) (format "%s" (cdr element)))
               ) json-env )))
 
+(defun eshell/clear ()
+    (interactive)
+    (let ((inhibit-read-only t))
+      (erase-buffer)
+      (eshell-send-input)))
+
 (defun eshell-named (buffer-title)
   (interactive
    (cond ((equal current-prefix-arg '(4))
