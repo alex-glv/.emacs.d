@@ -3,6 +3,7 @@
 
 ;; Add in your own as you wish:
 (defvar my-packages '(avy
+		      find-file-in-project
 		      swiper
 		      ace-window
 		      smartparens
@@ -20,7 +21,6 @@
 		      json
 		      smex
 		      bookmark+
-		      ido-ubiquitous
 		      web-mode
 		      virtualenv
 		      php+-mode

@@ -1,7 +1,7 @@
 (require 'smartparens)
 (require 'multi-term)
 (require 'company)
-
+(require 'ivy)
 
 (define-key company-active-map (kbd "TAB") (lambda () (interactive) (company-complete-common-or-cycle)))
 (define-key company-active-map (kbd "<tab>") (lambda () (interactive) (company-complete-common-or-cycle)))
@@ -11,6 +11,8 @@
 
 (global-set-key (kbd "C-w") 'backward-kill-word)
 (global-set-key (kbd "C-c C-k") 'kill-region)
+
+(define-key ivy-minibuffer-map (kbd "C-w") 'ivy-backward-kill-word)
 
 (global-set-key (kbd "C-S-<left>") (lambda () (interactive) (shrink-window-horizontally 15)))
 (global-set-key (kbd "C-S-<right>") (lambda () (interactive) (enlarge-window-horizontally 15)))
@@ -24,8 +26,8 @@
 (global-set-key (kbd "s-SPC g s") (lambda () (interactive) (magit-status ".")))
 (global-set-key (kbd "s-SPC g m") (lambda () (interactive) (magit-submodule-update)))
 
-(global-set-key (kbd "s-SPC h b") 'ibuffer)
-(global-set-key (kbd "s-SPC h h") 'helm-buffers-list)
+(global-set-key (kbd "s-SPC h b") 'helm-buffers-list)
+(global-set-key (kbd "s-SPC h h") 'ivy-switch-buffer)
 
 (global-set-key (kbd "s-SPC p f") 'projectile-find-file)
 
@@ -34,9 +36,11 @@
 (global-set-key (kbd "s-SPC c k") 'kill-buffer)
 (global-set-key (kbd "s-SPC c j") 'ibuffer-jump-to-buffer)
 
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-x b") 'switch-to-buffer)
-(global-set-key (kbd "C-x C-b") 'switch-to-buffer)
+;; (global-set-key (kbd "C-x C-f") 'helm-find-files) ;
+(eval-after-load 'ivy '(progn 
+			(global-set-key (kbd "C-x b") 'switch-to-buffer)
+			(global-set-key (kbd "C-x C-b") 'switch-to-buffer)))
+
 (global-set-key (kbd "s-SPC f f") 'helm-find-files)
 (global-set-key (kbd "s-SPC f s") 'save-buffer)
 (define-key sp-keymap (kbd "s-SPC l t") 'sp-prefix-tag-object)

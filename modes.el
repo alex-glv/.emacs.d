@@ -24,7 +24,7 @@
 (autoload 'octave-mode "octave-mod" nil t)
 (show-paren-mode 1)
 (global-linum-mode 1)
-(ido-mode 1)
+
 ; (setq linum-format "%3d  ")
 (custom-set-variables '(linum-format 'dynamic))
 (set-default 'imenu-auto-rescan t)
@@ -49,6 +49,8 @@
 
 (winner-mode)
 
+
+
 ;; ibuffer
 (setq ibuffer-saved-filter-groups
       (quote (("default"
@@ -57,16 +59,17 @@
 (setq inhibit-splash-screen t) 
 
 ;; ido
-(setq ido-enable-prefix nil
-      ido-enable-flex-matching t
-      ido-auto-merge-work-directories-length nil
-      ido-create-new-buffer 'always
-      ido-use-filename-at-point 'guess
-      ido-use-virtual-buffers t
-      ido-handle-duplicate-virtual-buffers 2
-      ido-max-prospects 10)
+;; (setq ido-enable-prefix nil
+;;       ido-enable-flex-matching t
+;;       ido-auto-merge-work-directories-length nil
+;;       ido-create-new-buffer 'always
+;;       ido-use-filename-at-point 'guess
+;;       ido-use-virtual-buffers t
+;;       ido-handle-duplicate-virtual-buffers 2
+;;       ido-max-prospects 10)
 
-(ido-ubiquitous t)
+;; (ido-ubiquitous t)
+;; (ido-mode 1)
 
 (setq helm-display-function
       (lambda (buf)
