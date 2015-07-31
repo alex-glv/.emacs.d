@@ -58,7 +58,7 @@
 (global-set-key (kbd "s-SPC a d") 'dired)
 (global-set-key (kbd "s-SPC a e") 'eshell-named)
 
-(global-set-key (kbd "s-SPC x k") 'kill-region)
+(global-set-key (kbd "H-w") 'kill-region)
 (global-set-key (kbd "s-SPC x n") 'mc/mark-next-like-this)
 (global-set-key (kbd "s-SPC x p") 'mc/mark-previous-like-this)
 (global-set-key (kbd "s-SPC x a") 'mc/mark-all-like-this)
