@@ -2,9 +2,11 @@
   (package-refresh-contents))
 
 ;; Add in your own as you wish:
-(defvar my-packages '(avy
+(defvar my-packages '(restclient
+		      avy
 		      find-file-in-project
 		      swiper
+		      counsil
 		      ace-window
 		      smartparens
 		      paredit

@@ -2,7 +2,7 @@
 
 (defun disable-magit-highlight-in-buffer () 
   (face-remap-add-relative 'magit-item-highlight '()))
-
+ 
 (defun toggle-dired-dwim ()
   (interactive)
   (let ((crnt-value dired-dwim-target))
@@ -99,3 +99,5 @@ BEG and END (region to sort)."
                (format "^%s" (regexp-quote (car kill-ring))) nil t)
             (replace-match "" nil nil))
           (goto-char next-line))))))
+
+

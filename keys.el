@@ -14,10 +14,10 @@
 
 (define-key ivy-minibuffer-map (kbd "C-w") 'ivy-backward-kill-word)
 
-(global-set-key (kbd "C-S-<left>") (lambda () (interactive) (shrink-window-horizontally 15)))
-(global-set-key (kbd "C-S-<right>") (lambda () (interactive) (enlarge-window-horizontally 15)))
-(global-set-key (kbd "C-S-<down>") (lambda () (interactive)(shrink-window 5)))
-(global-set-key (kbd "C-S-<up>") (lambda () (interactive) (enlarge-window 15)))
+(global-set-key (kbd "H-]") (lambda () (interactive) (shrink-window-horizontally 15)))
+(global-set-key (kbd "H-[") (lambda () (interactive) (enlarge-window-horizontally 15)))
+(global-set-key (kbd "H-{") (lambda () (interactive)(shrink-window 5)))
+(global-set-key (kbd "H-}") (lambda () (interactive) (enlarge-window 15)))
 
 (global-set-key (kbd "s-SPC h g") (lambda () (interactive) (helm-ls-git-ls)))
 (global-set-key (kbd "s-SPC h r") (lambda () (interactive) (ivy-recentf)))
@@ -43,17 +43,6 @@
 
 (global-set-key (kbd "s-SPC f f") 'helm-find-files)
 (global-set-key (kbd "s-SPC f s") 'save-buffer)
-(define-key sp-keymap (kbd "s-SPC l t") 'sp-prefix-tag-object)
-(define-key sp-keymap (kbd "s-SPC l p") 'sp-prefix-pair-object)
-(define-key sp-keymap (kbd "s-SPC l c") 'sp-convolute-sexp)
-(define-key sp-keymap (kbd "s-SPC l a") 'sp-absorb-sexp)
-(define-key sp-keymap (kbd "s-SPC l e") 'sp-emit-sexp)
-(define-key sp-keymap (kbd "s-SPC l p") 'sp-add-to-previous-sexp)
-(define-key sp-keymap (kbd "s-SPC l n") 'sp-add-to-next-sexp)
-(define-key sp-keymap (kbd "s-SPC l j") 'sp-join-sexp)
-(define-key sp-keymap (kbd "s-SPC l s") 'sp-split-sexp)
-(define-key sp-keymap (kbd "s-SPC l r") 'sp-rewrap-sexp)
-(define-key sp-keymap (kbd "s-SPC l b") 'sp-backward-kill-sexp)
 
 (global-set-key (kbd "s-SPC a d") 'dired)
 (global-set-key (kbd "s-SPC a e") 'eshell-named)
@@ -72,7 +61,7 @@
 (global-set-key (kbd "C-c <up>") 'windmove-up)
 (global-set-key (kbd "C-c <down>") 'windmove-down)
 
-(global-set-key (kbd "M-x") 'execute-extended-command)
+(global-set-key (kbd "M-x") 'counsel-M-x)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
@@ -81,6 +70,20 @@
 
 (global-set-key (kbd "s-SPC w w") (lambda () (interactive) (ace-select-window)))
 (global-set-key (kbd "s-SPC w c") (lambda () (interactive) (ace-delete-window)))
+
+(define-key sp-keymap (kbd "s-SPC l t") 'sp-prefix-tag-object)
+(define-key sp-keymap (kbd "s-SPC l p") 'sp-prefix-pair-object)
+(define-key sp-keymap (kbd "s-SPC l c") 'sp-convolute-sexp)
+(define-key sp-keymap (kbd "s-SPC l a") 'sp-absorb-sexp)
+(define-key sp-keymap (kbd "s-SPC l e") 'sp-emit-sexp)
+(define-key sp-keymap (kbd "s-SPC l p") 'sp-add-to-previous-sexp)
+(define-key sp-keymap (kbd "s-SPC l n") 'sp-add-to-next-sexp)
+(define-key sp-keymap (kbd "s-SPC l j") 'sp-join-sexp)
+(define-key sp-keymap (kbd "s-SPC l s") 'sp-split-sexp)
+(define-key sp-keymap (kbd "s-SPC l r") 'sp-rewrap-sexp)
+(define-key sp-keymap (kbd "s-SPC l l") 'sp-raise-sexp)
+(define-key sp-keymap (kbd "s-SPC l b") 'sp-backward-kill-sexp)
+
 
 (define-key sp-keymap (kbd "C-M-f") 'sp-forward-sexp)
 (define-key sp-keymap (kbd "C-M-b") 'sp-backward-sexp)
@@ -101,8 +104,8 @@
 (define-key sp-keymap (kbd "C-M-k") 'sp-kill-sexp)
 (define-key sp-keymap (kbd "C-M-w") 'sp-copy-sexp)
 
-(define-key sp-keymap (kbd "M-<delete>") 'sp-unwrap-sexp)
-(define-key sp-keymap (kbd "M-<backspace>") 'sp-backward-unwrap-sexp)
+(define-key sp-keymap (kbd "C-H-w") 'sp-unwrap-sexp)
+(define-key sp-keymap (kbd "C-H-v") 'sp-backward-unwrap-sexp)
 
 (define-key sp-keymap (kbd "C-M-)") 'sp-forward-slurp-sexp)
 (define-key sp-keymap (kbd "C-M-{") 'sp-forward-barf-sexp)

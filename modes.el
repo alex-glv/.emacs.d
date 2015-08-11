@@ -2,9 +2,19 @@
 (require 'web-mode)
 (require 'ivy)
 (require 'ace-window)
+(require 'clj-refactor)
 ;; MODES
 (ivy-mode t)
 (ivy-toggle-fuzzy)
+
+
+
+(defun my-clojure-mode-hook ()
+    (clj-refactor-mode 1)
+    (yas-minor-mode 1) ; for adding require/use/import
+    (cljr-add-keybindings-with-prefix "C-c C-m"))
+
+
 
 (setq avy-keys '(?a ?o ?e ?u ?h ?t ?n ?s))
 (setq aw-keys '(?a ?o ?e ?u ?h ?t ?n ?s))
@@ -18,6 +28,10 @@
 					   "  ")
 					 s))
 			       cands "\n"))))
+
+
+(setq ivy-re-builders-alist
+      '((t . ivy--regex-ignore-order)))
 
 (setq projectile-completion-system 'ivy)
 (smartparens-global-strict-mode)
@@ -39,11 +53,17 @@
 (hl-line-mode nil)
 (setq ido-everywhere t)
 ;; HOOKS
-(defun clj-hooks ()
-  	    (rainbow-delimiters-mode)
-            (eldoc-mode))
+(defun lisp-hooks ()
+  (rainbow-delimiters-mode)
+  (eldoc-mode))
 
-(add-hook 'emacs-lisp-mode-hook 'clj-hooks)
+(defun clj-hooks ()
+  (clj-refactor-mode 1)
+  (yas-minor-mode 1)
+  (cljr-add-keybindings-with-prefix "s-SPC m"))
+
+(add-hook 'emacs-lisp-mode-hook 'lisp-hooks)
+(add-hook 'clojure-mode-hook 'lisp-hooks)
 (add-hook 'clojure-mode-hook 'clj-hooks)
 (add-hook 'after-init-hook 'global-company-mode)
 
@@ -99,8 +119,8 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 (add-hook 'js2-mode-hook 'modify-syntax-table-for-jsx)
-
 (nyan-mode)
+
 
 (global-prettify-symbols-mode t)
 

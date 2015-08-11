@@ -5,9 +5,9 @@
 (put 'erase-buffer 'disabled nil)
 
 (setq mac-control-modifier 'control)
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier 'hyper)
-(setq mac-right-command-modifier 'super)
+(setq mac-command-modifier 'hyper)
+(setq mac-option-modifier 'meta)
+(setq mac-right-option-modifier 'super)
 
 (scroll-bar-mode nil)
 
