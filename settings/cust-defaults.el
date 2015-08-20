@@ -5,10 +5,10 @@
 (put 'erase-buffer 'disabled nil)
 
 (setq mac-control-modifier 'control)
-(setq mac-command-modifier 'hyper)
-(setq mac-option-modifier 'meta)
-(setq mac-right-option-modifier 'super)
-
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier 'hyper)
+(setq mac-right-option-modifier 'hyper)
+ 
 (scroll-bar-mode nil)
 
 (require 'smartparens-config)

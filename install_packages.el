@@ -6,7 +6,7 @@
 		      avy
 		      find-file-in-project
 		      swiper
-		      counsil
+		      counsel
 		      ace-window
 		      smartparens
 		      paredit
