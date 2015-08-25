@@ -4,12 +4,16 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 (put 'erase-buffer 'disabled nil)
 
-(setq mac-control-modifier 'control)
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier 'hyper)
-(setq mac-right-option-modifier 'hyper)
+(setq mac-control-modifier 'hyper)
+(setq mac-command-modifier 'control)
+(setq mac-option-modifier 'meta)
+(setq mac-right-option-modifier 'meta)
+
  
 (scroll-bar-mode nil)
+
+(require 'recentf)
+(recentf-mode)
 
 (require 'smartparens-config)
 (smartparens-global-mode t)
