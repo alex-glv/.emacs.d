@@ -4,6 +4,7 @@
 (setq mc/cmds-to-run-for-all
       '(
 	counsel-M-x
+	eval-last-sexp
 	kill-region
 	repeat
 	sp-backward-delete-char
@@ -17,6 +18,9 @@
 
 (setq mc/cmds-to-run-once
       '(
+	dired
+	ivy-done
 	keyboard-escape-quit
 	sp-delete-char
+	winner-undo
 	))

@@ -6,3 +6,5 @@
 			     (magit-run-git "stash" "save" magit-custom-options "--" "pull-stash-apply-me")))
 (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
 (add-hook 'ibuffer-hook 'create-buffs-group)
+(add-to-list 'auto-mode-alist
+	     '("\\.restclient\\'" . restclient-mode))

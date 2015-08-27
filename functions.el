@@ -2,7 +2,14 @@
 
 (defun disable-magit-highlight-in-buffer () 
   (face-remap-add-relative 'magit-item-highlight '()))
- 
+
+(defun make-small-buff (name)
+  (let ((buf (get-buffer-create name)))
+    (cl-assert (and buf (buffer-live-p buf)))
+    (split-window-vertically 10)
+    (switch-to-buffer buf)
+    buf))
+
 (defun toggle-dired-dwim ()
   (interactive)
   (let ((crnt-value dired-dwim-target))
@@ -100,4 +107,10 @@ BEG and END (region to sort)."
             (replace-match "" nil nil))
           (goto-char next-line))))))
 
+
+
+(defun rest-client ()
+  (interactive)
+  (let ((buf (make-small-buff "rest-client")))
+    (restclient-mode)))
 
