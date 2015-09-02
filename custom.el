@@ -12,9 +12,6 @@
  '(ansi-color-names-vector
    ["#3F3F3F" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#DCDCCC"])
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
- '(cider-cljs-repl
-   "(do (require 'weasel.repl.websocket) (require 'cemerick.piggieback) (cemerick.piggieback/cljs-repl (weasel.repl.websocket/repl-env :ip \"127.0.0.1\" :port 9001 ) :asset-path \"assets/js/out\" :output-dir \"resources/public/assets/js\"))")
- '(cider-repl-use-pretty-printing t)
  '(cursor-type (quote box))
  '(custom-safe-themes
    (quote
