@@ -114,3 +114,9 @@ BEG and END (region to sort)."
   (let ((buf (make-small-buff "rest-client")))
     (restclient-mode)))
 
+(defun isearch-save-and-exit ()
+  "Exit search normally. and save the `search-string' on kill-ring."
+  (interactive)
+  (isearch-done)
+  (isearch-clean-overlays)
+  (kill-new isearch-string))

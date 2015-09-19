@@ -47,7 +47,7 @@
 			(global-set-key (kbd "C-x b") 'switch-to-buffer)
 			(global-set-key (kbd "C-x C-b") 'switch-to-buffer)))
 
-(global-set-key (kbd "C-S-SPC f f") 'helm-find-files)
+(global-set-key (kbd "C-S-SPC f f") 'ido-find-file)
 (global-set-key (kbd "C-S-SPC f s") 'save-buffer)
 
 (global-set-key (kbd "C-S-SPC a d") 'dired)
