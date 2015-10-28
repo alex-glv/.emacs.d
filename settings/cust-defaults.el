@@ -22,8 +22,8 @@
 (show-smartparens-global-mode t)
 (sp-local-pair 'minibuffer-inactive-mode "'" nil :actions nil)
 
-;; (sp-with-modes '(clojure-mode clojurescript-mode)
-;;   (sp-local-pair "'" nil :actions nil))
+
+(add-to-list 'sp--lisp-modes 'cider-clojure-interaction-mode)
 
 ;;; markdown-mode
 (sp-with-modes '(markdown-mode gfm-mode rst-mode)
@@ -44,6 +44,10 @@
 ;;; lisp modes
 (sp-with-modes sp--lisp-modes
   (sp-local-pair "(" nil :bind "C-("))
+
+(sp-with-modes sp--lisp-modes
+  (sp-local-pair "'" nil :actions nil))
+
 
 (require 'tramp)
 

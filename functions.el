@@ -120,3 +120,27 @@ BEG and END (region to sort)."
   (isearch-done)
   (isearch-clean-overlays)
   (kill-new isearch-string))
+
+
+(defun get-string-from-file (filePath)
+  "Return filePath's file content."
+  (with-temp-buffer
+    (insert-file-contents filePath)
+    (buffer-string)))
+
+(defun my-env-tuple (export_string)
+  (apply #'setenv 
+     (split-string (replace-regexp-in-string "export[\sc+]" "" export_string) "=" t)))
+
+
+
+
+;; WIP
+(defun setenv-from-out (shell_command)
+  (mapcar 'my-env-tuple
+	  (remove-if
+	   (lambda (st)
+	     (message st)
+	     (if (string-match "^#" st) t nil))
+	   (split-string
+	    (shell-command-to-string shell_command) "\n"))))

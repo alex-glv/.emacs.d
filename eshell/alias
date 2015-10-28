@@ -1,7 +1,14 @@
-alias cr get-cur-remote
-alias cljs-build lein trampoline cljsbuild $1
-alias drm-all docker rm ${docker ps -aq}
-alias cd-trmp-hp cd "/ssh:$1|ssh:$2:$3"
-alias cd-trmp cd "/ssh:$1:$2"
-alias cd-trmp-sudo cd "/ssh:$1|sudo:$1:$2"
+alias to-buff $* > #<buffer ___> $*
+alias docker-killall for i in ${docker ps -q} {docker kill $i} $*
+alias ff find-file "$1" $*
+alias dev-env docker-machine env dev
+alias dev-env=docker-machine env dev
 alias ms magit-status .
+alias cd-trmp-sudo cd "/ssh:$1|sudo:$1:$2"
+alias cd-trmp cd "/ssh:$1:$2"
+alias cd-trmp-hp cd "/ssh:$1|ssh:$2:$3"
+alias drm-all docker rm ${docker ps -aq}
+alias cljs-build lein trampoline cljsbuild $1
+alias cr get-cur-remote
+alias docker-ip docker inspect --format={{.NetworkSettings.IPAddress}} $1
+alias kill-all=for i in

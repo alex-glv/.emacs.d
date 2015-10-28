@@ -3,6 +3,7 @@
 (require 'ivy)
 (require 'ace-window)
 (require 'clj-refactor)
+(require 'eshell)
 ;; MODES
 (ivy-mode t)
 (ivy-toggle-fuzzy)
@@ -100,6 +101,7 @@
 (setq eshell-where-to-jump 'begin)
 (setq eshell-review-quick-commands nil)
 (setq eshell-smart-space-goes-to-end t)
+
 (toggle-diredp-find-file-reuse-dir 1)
 (setq dired-dwim-target t)
 
@@ -146,3 +148,5 @@
 
 (add-to-list 'auto-mode-alist '("\\.gradle\\'" . groovy-mode))
 (add-to-list 'auto-mode-alist '("\\*cider-scratch*\\'" . clojure-mode))
+
+;;(add-to-list 'eshell-visual-commands "watch")

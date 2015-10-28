@@ -16,8 +16,8 @@
 (add-to-list 'load-path settings-dir)
 
 (load "~/.emacs.d/install_packages.el")
-(load "~/.emacs.d/modes.el")
 (load "~/.emacs.d/functions.el")
+(load "~/.emacs.d/modes.el")
 (load "~/.emacs.d/keys.el")
 (load "~/.emacs.d/variables.el")
 (load "~/.emacs.d/hooks.el")

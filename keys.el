@@ -79,6 +79,7 @@
 
 (global-set-key (kbd "C-S-SPC w w") (lambda () (interactive) (ace-select-window)))
 (global-set-key (kbd "C-S-SPC w c") (lambda () (interactive) (ace-delete-window)))
+(global-set-key (kbd "C-S-SPC w C") (lambda () (interactive) (kill-buffer-and-window)))
 (global-set-key (kbd "C-S-SPC w s") (lambda () (interactive) (ace-swap-window)))
 
 (define-key sp-keymap (kbd "C-S-SPC l t") 'sp-prefix-tag-object)

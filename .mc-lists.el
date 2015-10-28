@@ -19,8 +19,11 @@
 (setq mc/cmds-to-run-once
       '(
 	dired
+	forward-sentence
+	indent-for-tab-command
 	ivy-done
 	keyboard-escape-quit
 	sp-delete-char
 	winner-undo
+	yas-expand
 	))
