@@ -4,9 +4,11 @@
 ;; Add in your own as you wish:
 (defvar my-packages '(restclient
 		      avy
+		      clj-refactor
 		      find-file-in-project
 		      swiper
 		      counsel
+		      multi-term
 		      ace-window
 		      smartparens
 		      paredit
@@ -14,6 +16,7 @@
 		      clojure-mode
 		      cider
 		      company
+		      nyan-mode
 		      company-go
 		      framemove
 		      dired+
