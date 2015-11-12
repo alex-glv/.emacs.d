@@ -47,6 +47,7 @@
 		      golden-ratio
 		      projectile
 		      undo-tree
+		      aggressive-indent
 		      )
   "A list of packages to ensure are installed at launch.")
 
