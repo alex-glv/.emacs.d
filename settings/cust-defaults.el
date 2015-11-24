@@ -22,6 +22,7 @@
 (show-smartparens-global-mode t)
 (sp-local-pair 'minibuffer-inactive-mode "'" nil :actions nil)
 
+(menu-bar-mode 0)
 
 (add-to-list 'sp--lisp-modes 'cider-clojure-interaction-mode)
 
