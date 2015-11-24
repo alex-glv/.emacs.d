@@ -4,10 +4,12 @@
 (require 'ace-window)
 (require 'clj-refactor)
 (require 'eshell)
+(require 'aggressive-indent)
 ;; MODES
 (ivy-mode t)
 (ivy-toggle-fuzzy)
 
+(aggressive-indent-mode 1)
 
 
 (defun my-clojure-mode-hook ()
