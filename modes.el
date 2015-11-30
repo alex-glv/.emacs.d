@@ -9,7 +9,7 @@
 (ivy-mode t)
 (ivy-toggle-fuzzy)
 
-(aggressive-indent-mode 1)
+(global-aggressive-indent-mode 1)
 
 
 (defun my-clojure-mode-hook ()

@@ -14,10 +14,10 @@
 
 (define-key ivy-minibuffer-map (kbd "C-w") 'ivy-backward-kill-word)
 
-(global-set-key (kbd "H-]") (lambda () (interactive) (shrink-window-horizontally 15)))
-(global-set-key (kbd "H-[") (lambda () (interactive) (enlarge-window-horizontally 15)))
-(global-set-key (kbd "H-}") (lambda () (interactive) (shrink-window 5)))
-(global-set-key (kbd "H-{") (lambda () (interactive) (enlarge-window 5)))
+(global-set-key (kbd "C-s-g") (lambda () (interactive) (shrink-window-horizontally 15)))
+(global-set-key (kbd "C-s-l") (lambda () (interactive) (enlarge-window-horizontally 15)))
+(global-set-key (kbd "C-s-c") (lambda () (interactive) (shrink-window 5)))
+(global-set-key (kbd "C-s-r") (lambda () (interactive) (enlarge-window 5)))
 
 
 (global-set-key (kbd "C-S-SPC t s") (lambda () (interactive)
