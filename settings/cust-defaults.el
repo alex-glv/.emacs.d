@@ -65,4 +65,6 @@
 
 (add-to-list 'tramp-remote-path "/usr/local/bin/")
 
+(setenv "PATH" (concat (getenv "PATH") ":" (getenv "GOBIN")))
+
 (provide 'cust-defaults)
