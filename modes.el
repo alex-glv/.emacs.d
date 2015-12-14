@@ -22,17 +22,6 @@
 (setq avy-keys '(?a ?o ?e ?u ?h ?t ?n ?s))
 (setq aw-keys '(?a ?o ?e ?u ?h ?t ?n ?s))
 
-(setq ivy-format-function (lambda (cands) 
-			    (let ((i -1))
-			      (mapconcat
-			       (lambda (s)
-				 (concat (if (eq (cl-incf i) ivy--index)
-					     "> "
-					   "  ")
-					 s))
-			       cands "\n"))))
-
-
 (setq ivy-re-builders-alist
       '((t . ivy--regex-ignore-order)))
 
