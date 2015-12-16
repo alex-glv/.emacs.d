@@ -12,12 +12,16 @@
 (global-aggressive-indent-mode 1)
 
 
+
 (defun my-clojure-mode-hook ()
-    (clj-refactor-mode 1)
-    (yas-minor-mode 1) ; for adding require/use/import
-    (cljr-add-keybindings-with-prefix "C-c C-m"))
+  (clj-refactor-mode 1)
+  (yas-minor-mode 1) ; for adding require/use/import
+  (cljr-add-keybindings-with-prefix "C-c C-m"))
 
 
+(setq evil-want-C-u-scroll t)
+(require 'evil)
+(evil-mode 1)
 
 (setq avy-keys '(?a ?o ?e ?u ?h ?t ?n ?s))
 (setq aw-keys '(?a ?o ?e ?u ?h ?t ?n ?s))
@@ -31,7 +35,7 @@
 (show-paren-mode 1)
 (global-linum-mode 1)
 
-; (setq linum-format "%3d  ")
+					; (setq linum-format "%3d  ")
 (custom-set-variables '(linum-format 'dynamic))
 (set-default 'imenu-auto-rescan t)
 (menu-bar-mode nil)

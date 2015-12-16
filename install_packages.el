@@ -4,6 +4,7 @@
 ;; Add in your own as you wish:
 (defvar my-packages '(restclient
 		      avy
+		      evil
 		      clj-refactor
 		      find-file-in-project
 		      swiper
