@@ -65,8 +65,10 @@
 
 (add-to-list 'tramp-remote-path "/usr/local/bin/")
 
-(setenv "PATH" (concat (getenv "PATH") ":" (getenv "GOBIN")))
-(add-to-list 'exec-path (getenv "GOBIN"))
+(let ((curr-sys-path "/run/current-system/sw/bin"))
+  (setenv "PATH" (concat (getenv "PATH") ":" (getenv "GOBIN") ":" curr-sys-path))
+  (add-to-list 'exec-path (getenv "GOBIN"))
+  (add-to-list 'exec-path curr-sys-path))
 
 (provide 'cust-defaults)
 
