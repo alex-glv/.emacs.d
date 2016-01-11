@@ -82,6 +82,10 @@
 (global-set-key (kbd "C-S-SPC w C") (lambda () (interactive) (kill-buffer-and-window)))
 (global-set-key (kbd "C-S-SPC w s") (lambda () (interactive) (ace-swap-window)))
 
+(global-set-key (kbd "C-S-SPC s s") (lambda () (interactive) (swiper)))
+(global-set-key (kbd "C-S-SPC s c") 'avy-goto-char)
+(global-set-key (kbd "C-S-SPC s r") 'avy-goto-char-2)
+
 (define-key sp-keymap (kbd "C-S-SPC l t") 'sp-prefix-tag-object)
 (define-key sp-keymap (kbd "C-S-SPC l p") 'sp-prefix-pair-object)
 (define-key sp-keymap (kbd "C-S-SPC l c") 'sp-convolute-sexp)

@@ -52,16 +52,14 @@
 
 (require 'tramp)
 
-
 ;; disable bold font
 (mapc
  (lambda (face)
    (set-face-attribute face nil :weight 'normal :underline nil))
  (face-list))
 
-;; (when (eq system-type 'darwin)
-;;   (set-face-attribute 'default nil :family "Monaco")
-;;   (set-face-attribute 'default nil :height 130))
+(set-face-attribute 'default nil :family "Inconsolata")
+(set-face-attribute 'default nil :height 130)
 
 (add-to-list 'tramp-remote-path "/usr/local/bin/")
 
