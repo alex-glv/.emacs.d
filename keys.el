@@ -83,6 +83,7 @@
 (global-set-key (kbd "C-S-SPC w s") (lambda () (interactive) (ace-swap-window)))
 
 (global-set-key (kbd "C-S-SPC s s") (lambda () (interactive) (swiper)))
+(global-set-key (kbd "C-S-s") (lambda () (interactive) (swiper)))
 (global-set-key (kbd "C-S-SPC s c") 'avy-goto-char)
 (global-set-key (kbd "C-S-SPC s r") 'avy-goto-char-2)
 

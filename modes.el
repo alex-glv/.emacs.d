@@ -19,9 +19,9 @@
   (cljr-add-keybindings-with-prefix "C-c C-m"))
 
 
-(setq evil-want-C-u-scroll t)
-(require 'evil)
-(evil-mode 1)
+;; (setq evil-want-C-u-scroll t)
+;; (require 'evil)
+;; (evil-mode 1)
 
 (setq avy-keys '(?a ?o ?e ?u ?h ?t ?n ?s))
 (setq aw-keys '(?a ?o ?e ?u ?h ?t ?n ?s))
