@@ -87,6 +87,8 @@
 (global-set-key (kbd "C-S-SPC s c") 'avy-goto-char)
 (global-set-key (kbd "C-S-SPC s r") 'avy-goto-char-2)
 
+(global-set-key (kbd "C-S-SPC g r") 'golden-ratio-mode)
+
 (define-key sp-keymap (kbd "C-S-SPC l t") 'sp-prefix-tag-object)
 (define-key sp-keymap (kbd "C-S-SPC l p") 'sp-prefix-pair-object)
 (define-key sp-keymap (kbd "C-S-SPC l c") 'sp-convolute-sexp)

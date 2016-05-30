@@ -12,6 +12,8 @@
 (add-to-list 'auto-mode-alist
 	     '("\\.restclient\\'" . restclient-mode))
 
+(setq gofmt-command "goimports")
+(add-hook 'go-mode-hook 'company-mode)
 (add-hook 'go-mode-hook (lambda ()
-                          (set (make-local-variable 'company-backends) '(company-go))
-                          (company-mode)))
+			  (set (make-local-variable 'company-backends) '(company-go))
+			  (company-mode)))

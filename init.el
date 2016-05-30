@@ -1,12 +1,12 @@
 (require 'package)
 (require 'em-smart)
 
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+;; (add-to-list 'package-archives
+;;              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives 
-             '("org" . "http://orgmode.org/elpa/") t)
+;; (add-to-list 'package-archives 
+;;              '("org" . "http://orgmode.org/elpa/") t)
 
 (package-initialize)
 
@@ -24,7 +24,7 @@
 
 (require 'cust-defaults)
 
-(global-company-mode)
+(global-company-mode '(not sql-interactive-mode))
 (global-undo-tree-mode)
 (load-theme 'zenburn t)
 

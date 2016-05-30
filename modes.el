@@ -33,7 +33,7 @@
 (smartparens-global-strict-mode)
 (autoload 'octave-mode "octave-mod" nil t)
 (show-paren-mode 1)
-(global-linum-mode 1)
+(global-linum-mode 0)
 
 					; (setq linum-format "%3d  ")
 (custom-set-variables '(linum-format 'dynamic))
@@ -143,5 +143,4 @@
 
 (add-to-list 'auto-mode-alist '("\\.gradle\\'" . groovy-mode))
 (add-to-list 'auto-mode-alist '("\\*cider-scratch*\\'" . clojure-mode))
-
 ;;(add-to-list 'eshell-visual-commands "watch")

@@ -1,0 +1,53 @@
+
+;; ----- smex-history -----
+(
+ toggle-dired-dwim
+ replace-string
+ aggressive-indent-mode
+ revert-buffer
+ setenv
+ getenv
+ go-remove-unused-imports
+)
+
+;; ----- smex-data -----
+(
+ (package-install . 7)
+ (nix-mode . 5)
+ (calendar . 1)
+ (calc . 3)
+ (customize-group . 7)
+ (customize . 3)
+ (aggressive-indent-mode . 8)
+ (describe-font . 1)
+ (sql-mysql . 1)
+ (company-mode . 1)
+ (csv-mode . 1)
+ (swiper . 5)
+ (recover-this-file . 1)
+ (counsel-locate . 1)
+ (rest-client . 4)
+ (getenv . 11)
+ (exec-path-from-shell-copy-env . 1)
+ (golden-ratio-mode . 1)
+ (replace-string . 10)
+ (magit-init . 1)
+ (magit-fetch . 1)
+ (magit-fetch-all . 1)
+ (go-mode . 2)
+ (gofmt . 1)
+ (godef-jump . 1)
+ (rgrep . 9)
+ (completion-at-point . 3)
+ (go-remove-unused-imports . 11)
+ (json-pretty-print . 4)
+ (godoc . 5)
+ (list-packages . 2)
+ (nix-compile . 1)
+ (setenv . 8)
+ (ansi-term . 3)
+ (debug-on-entry . 3)
+ (go-import-add . 1)
+ (revert-buffer . 5)
+ (toggle-dired-dwim . 1)
+)

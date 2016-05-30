@@ -58,14 +58,14 @@
    (set-face-attribute face nil :weight 'normal :underline nil))
  (face-list))
 
-(set-face-attribute 'default nil :family "Inconsolata")
-(set-face-attribute 'default nil :height 130)
+;(set-face-attribute 'default nil :family "Inconsolata")
+;(set-face-attribute 'default nil :height 130)
 
 (add-to-list 'tramp-remote-path "/usr/local/bin/")
 
 (let ((curr-sys-path "/run/current-system/sw/bin"))
   (setenv "PATH" (concat (getenv "PATH") ":" (getenv "GOBIN") ":" curr-sys-path))
-  (add-to-list 'exec-path (getenv "GOBIN"))
+  (add-to-list 'exec-path (getenv "GOBIN"))  
   (add-to-list 'exec-path curr-sys-path))
 
 (provide 'cust-defaults)
