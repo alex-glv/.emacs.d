@@ -144,3 +144,13 @@
 (add-to-list 'auto-mode-alist '("\\.gradle\\'" . groovy-mode))
 (add-to-list 'auto-mode-alist '("\\*cider-scratch*\\'" . clojure-mode))
 ;;(add-to-list 'eshell-visual-commands "watch")
+
+;; Add yasnippet support for all company backends
+;; https://github.com/syl20bnr/spacemacs/pull/179
+
+(defvar company-mode/enable-yas t
+  "Enable yasnippet for all backends.")
+
+
+
+(setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))

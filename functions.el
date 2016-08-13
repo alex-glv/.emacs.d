@@ -144,3 +144,19 @@ BEG and END (region to sort)."
 	     (if (string-match "^#" st) t nil))
 	   (split-string
 	    (shell-command-to-string shell_command) "\n"))))
+
+(defun company-mode/backend-with-yas (backend)
+  (if (or (not company-mode/enable-yas) (and (listp backend) (member 'company-yasnippet backend)))
+      backend
+    (append (if (consp backend) backend (list backend))
+	    '(:with company-yasnippet))))
+
+(defun copy-to-osx-clipboard ()
+  (interactive)
+  (if (region-active-p)
+      (progn
+	(cond
+	 ((and (display-graphic-p) x-select-enable-clipboard)
+	  (x-set-selection 'CLIPBOARD (buffer-substring (region-beginning) (region-end))))
+	 (t (shell-command-on-region (region-beginning) (region-end)
+				     "pbcopy"))))))
