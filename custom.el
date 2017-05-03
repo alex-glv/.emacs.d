@@ -13,12 +13,19 @@
  '(ansi-color-names-vector
    ["#3F3F3F" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#DCDCCC"])
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
+ '(cider-cljs-lein-repl
+   "(do (require 'weasel.repl.websocket) (cemerick.piggieback/cljs-repl (weasel.repl.websocket/repl-env :ip \"127.0.0.1\" :port 9001)))")
+ '(cider-refresh-before-fn nil)
  '(company-go-begin-after-member-access t)
  '(company-go-show-annotation t)
+ '(company-idle-delay 0.2)
  '(cursor-type (quote box))
  '(custom-safe-themes
    (quote
     ("11636897679ca534f0dec6f5e3cb12f28bf217a527755f6b9e744bd240ed47e1" "196cc00960232cfc7e74f4e95a94a5977cb16fd28ba7282195338f68c84058ec" "19352d62ea0395879be564fc36bc0b4780d9768a964d26dfae8aad218062858d" "05c3bc4eb1219953a4f182e10de1f7466d28987f48d647c01f1f0037ff35ab9a" "2e5705ad7ee6cfd6ab5ce81e711c526ac22abed90b852ffaf0b316aa7864b11f" "09b2d2d662a17200bf6e84305c05202353dca027e352535dc221a7d3342cd0d9" "b06aaf5cefc4043ba018ca497a9414141341cb5a2152db84a9a80020d35644d1" "9dae95cdbed1505d45322ef8b5aa90ccb6cb59e0ff26fef0b8f411dfc416c552" default)))
+ '(docker-containers-rm-arguments (quote ("-f")))
+ '(elpy-rpc-pythonpath
+   "/Users/sashka/.emacs.d/elpa/elpy-20160613.1005/:/Users/sashka/microservices-demo/testing/")
  '(fci-rule-color "#383838")
  '(grep-files-aliases
    (quote
@@ -47,6 +54,10 @@
  '(org-clock-rounding-minutes 5)
  '(org-support-shift-select nil)
  '(org-time-stamp-rounding-minutes (quote (5 15)))
+ '(package-selected-packages
+   (quote
+    (flx-ido yaml-mode zenburn-theme smex restclient rainbow-delimiters projectile php+-mode multi-term markdown-mode+ magit js2-mode helm-ls-git haml-mode groovy-mode golden-ratio exec-path-from-shell evil elpy dockerfile-mode dired+ counsel company-tern company-go clj-refactor bookmark+ avy apache-mode)))
+ '(python-shell-extra-pythonpaths (quote ("/Users/sashka/microservices-demo/testing")))
  '(scroll-bar-mode nil)
  '(search-nonincremental-instead nil)
  '(tool-bar-mode nil)

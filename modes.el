@@ -1,22 +1,23 @@
 (require 'dired+)
-(require 'web-mode)
-(require 'ivy)
-(require 'ace-window)
+                                        ;(require 'ivy)
+(require 'ido)
 (require 'clj-refactor)
 (require 'eshell)
-(require 'aggressive-indent)
+(require 'paredit)
 ;; MODES
-(ivy-mode t)
-(ivy-toggle-fuzzy)
+;(ivy-mode t)
+;(ivy-toggle-fuzzy)
 
-(global-aggressive-indent-mode 1)
-
+;;(global-aggressive-indent-mode 1)
+(transient-mark-mode 0)
 
 
 (defun my-clojure-mode-hook ()
   (clj-refactor-mode 1)
   (yas-minor-mode 1) ; for adding require/use/import
-  (cljr-add-keybindings-with-prefix "C-c C-m"))
+  (paredit-mode 1)
+  (cljr-add-keybindings-with-prefix "C-c C-m")
+  )
 
 
 ;; (setq evil-want-C-u-scroll t)
@@ -29,8 +30,8 @@
 (setq ivy-re-builders-alist
       '((t . ivy--regex-ignore-order)))
 
-(setq projectile-completion-system 'ivy)
-(smartparens-global-strict-mode)
+(setq projectile-completion-system 'ido)
+;;(smartparens-global-strict-mode)
 (autoload 'octave-mode "octave-mod" nil t)
 (show-paren-mode 1)
 (global-linum-mode 0)
@@ -51,16 +52,20 @@
 ;; HOOKS
 (defun lisp-hooks ()
   (rainbow-delimiters-mode)
+  (paredit-mode)
   (eldoc-mode))
 
 (defun clj-hooks ()
   (clj-refactor-mode 1)
   (yas-minor-mode 1)
+  (paredit-mode 1)
   (cljr-add-keybindings-with-prefix "s-SPC m"))
 
 (add-hook 'emacs-lisp-mode-hook 'lisp-hooks)
 (add-hook 'clojure-mode-hook 'lisp-hooks)
 (add-hook 'clojure-mode-hook 'clj-hooks)
+(add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
+(add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)
 (add-hook 'after-init-hook 'global-company-mode)
 
 (winner-mode)
@@ -75,17 +80,17 @@
 (setq inhibit-splash-screen t) 
 
 ;; ido
-;; (setq ido-enable-prefix nil
-;;       ido-enable-flex-matching t
-;;       ido-auto-merge-work-directories-length nil
-;;       ido-create-new-buffer 'always
-;;       ido-use-filename-at-point 'guess
-;;       ido-use-virtual-buffers t
-;;       ido-handle-duplicate-virtual-buffers 2
-;;       ido-max-prospects 10)
+(setq ido-enable-prefix nil
+      ido-enable-flex-matching t
+      ido-auto-merge-work-directories-length nil
+      ido-create-new-buffer 'always
+      ido-use-filename-at-point 'guess
+      ido-use-virtual-buffers t
+      ido-handle-duplicate-virtual-buffers 2
+      ido-max-prospects 10)
 
-;; (ido-ubiquitous t)
-;; (ido-mode 1)
+;(ido-ubiquitous t)
+(ido-mode 1)
 
 (setq helm-display-function
       (lambda (buf)
@@ -105,18 +110,10 @@
 (elpy-enable)
 (setq elpy-rpc-backend "jedi")
 
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 (add-hook 'js2-mode-hook 'modify-syntax-table-for-jsx)
-(nyan-mode)
+;;(nyan-mode)
 
 
 (global-prettify-symbols-mode t)

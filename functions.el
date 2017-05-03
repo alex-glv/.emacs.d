@@ -153,10 +153,13 @@ BEG and END (region to sort)."
 
 (defun copy-to-osx-clipboard ()
   (interactive)
-  (if (region-active-p)
-      (progn
-	(cond
-	 ((and (display-graphic-p) x-select-enable-clipboard)
-	  (x-set-selection 'CLIPBOARD (buffer-substring (region-beginning) (region-end))))
-	 (t (shell-command-on-region (region-beginning) (region-end)
-				     "pbcopy"))))))
+  (progn
+    (cond
+     ((and (display-graphic-p) x-select-enable-clipboard)
+      (x-set-selection 'CLIPBOARD (buffer-substring (region-beginning) (region-end))))
+     (t (shell-command-on-region (region-beginning) (region-end)
+				 "pbcopy")))))
+
+(defun paste-from-osx-clipboard ()
+  (interactive)
+  (insert (shell-command-to-string "pbpaste")))
