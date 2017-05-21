@@ -73,12 +73,14 @@
   (add-hook 'lisp-interaction-mode-hook #'eldoc-mode)
   (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode))
 
-;; (use-package avy
-;;   :ensure t
-;;   :bind (("s-." . avy-goto-word-or-subword-1)
-;;          ("s-," . avy-goto-char))
-;;   :config
-;;   (setq avy-background t))
+(use-package avy
+  :ensure t
+  :bind (("C-x c c" . avy-goto-char)
+         ("C-x c s" . avy-goto-char-timer)
+         ("C-x c a" . avy-goto-word-0))
+  :config
+  (setq avy-background t)
+  (setq-default avy-keys '(?a ?r ?s ?t ?n ?e ?i ?o)))
 
 
 (use-package magit
@@ -90,6 +92,9 @@
   :bind ("s-p" . projectile-command-map)
   :config
   (projectile-global-mode +1))
+
+(use-package clj-refactor
+  :ensure t)
 
 (use-package expand-region
   :ensure t
@@ -132,7 +137,8 @@
   (setq dired-dwim-target t)
   ;; always delete and copy recursively
   (setq dired-recursive-deletes 'always)
-  (setq dired-hide-details-hide-information-lines 'always)
+  (add-hook 'dired-mode-hook
+          (lambda () (dired-hide-details-mode +1)))
   (setq dired-recursive-copies 'always)
 
   ;; if there is a dired buffer displayed in the next window, use its
@@ -154,7 +160,8 @@
   :config
   (add-hook 'clojure-mode-hook #'paredit-mode)
   (add-hook 'clojure-mode-hook #'subword-mode)
-  (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode))
+  (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
+  (add-hook 'clojure-mode-hook #'clj-refactor-mode))
 
 (use-package cider
   :ensure t
@@ -231,6 +238,19 @@
               (face-list))
 
 (add-to-list 'tramp-remote-path "/usr/local/bin/")
+
+(defun copy-to-osx-clipboard ()
+  (interactive)
+  (progn
+    (cond
+     ((and (display-graphic-p) x-select-enable-clipboard)
+      (x-set-selection 'CLIPBOARD (buffer-substring (region-beginning) (region-end))))
+     (t (shell-command-on-region (region-beginning) (region-end)
+				 "pbcopy")))))
+
+(defun paste-from-osx-clipboard ()
+  (interactive)
+  (insert (shell-command-to-string "pbpaste")))
 
 (let ((curr-sys-path "/usr/local/bin"))
   (setenv "PATH" (concat (getenv "PATH") ":" (getenv "GOBIN") ":" curr-sys-path))

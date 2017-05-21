@@ -22,7 +22,7 @@
  '(cursor-type (quote box))
  '(custom-safe-themes
    (quote
-    ("a0dc0c1805398db495ecda1994c744ad1a91a9455f2a17b59b716f72d3585dde" "f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" default)))
+    ("f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" default)))
  '(fci-rule-color "#383838")
  '(grep-files-aliases
    (quote
@@ -49,7 +49,7 @@
  '(org-time-stamp-rounding-minutes (quote (5 15)))
  '(package-selected-packages
    (quote
-    (which-key undo-tree flycheck golden-ratio yaml-mode markdown-mode smex flx-ido ido-ubiquitous cider clojure-mode exec-path-from-shell paredit expand-region projectile magit rainbow-mode rainbow-delimiters zenburn-theme with-editor use-package magit-popup company)))
+    (clj-refactor clj-refacor inf-clojure avy company-flx which-key undo-tree flycheck golden-ratio yaml-mode markdown-mode smex flx-ido ido-ubiquitous cider clojure-mode exec-path-from-shell paredit expand-region projectile magit rainbow-mode rainbow-delimiters zenburn-theme with-editor use-package magit-popup company)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(scroll-bar-mode nil)
  '(search-nonincremental-instead nil)
