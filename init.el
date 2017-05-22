@@ -51,6 +51,9 @@
   :config
   (global-company-mode))
 
+(use-package company-quickhelp
+  :ensure t)
+
 
 (use-package zenburn-theme
              :ensure t
@@ -94,7 +97,8 @@
   (projectile-global-mode +1))
 
 (use-package clj-refactor
-  :ensure t)
+  :ensure t
+  :config)
 
 (use-package expand-region
   :ensure t
@@ -161,7 +165,9 @@
   (add-hook 'clojure-mode-hook #'paredit-mode)
   (add-hook 'clojure-mode-hook #'subword-mode)
   (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
-  (add-hook 'clojure-mode-hook #'clj-refactor-mode))
+  (add-hook 'clojure-mode-hook #'clj-refactor-mode)
+  (cljr-add-keybindings-with-prefix "C-x y")
+  )
 
 (use-package cider
   :ensure t
@@ -169,7 +175,9 @@
   (add-hook 'cider-mode-hook #'eldoc-mode)
   (add-hook 'cider-repl-mode-hook #'eldoc-mode)
   (add-hook 'cider-repl-mode-hook #'paredit-mode)
-  (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode))
+  (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
+  (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
+  (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion))
 
 (use-package ido
   :ensure t
@@ -224,6 +232,10 @@
         `((".*" . ,temporary-file-directory)))
   (setq undo-tree-auto-save-history t))
 
+(use-package yasnippet
+  :ensure t
+  :config
+  (yas-global-mode t))
 
 (use-package which-key
   :ensure t
@@ -236,8 +248,7 @@
               (lambda (face)
                 (set-face-attribute face nil :weight 'normal :underline nil))
               (face-list))
-
-(add-to-list 'tramp-remote-path "/usr/local/bin/")
+             :config (add-to-list 'tramp-remote-path "/usr/local/bin/"))
 
 (defun copy-to-osx-clipboard ()
   (interactive)
@@ -255,7 +266,7 @@
 (let ((curr-sys-path "/usr/local/bin"))
   (setenv "PATH" (concat (getenv "PATH") ":" (getenv "GOBIN") ":" curr-sys-path))
   (add-to-list 'exec-path (getenv "GOBIN"))  
-  (add-to-list 'exec-path curr-sys-path)))
+  (add-to-list 'exec-path curr-sys-path))
 
 
 ;; (when (memq window-system '(mac ns))
