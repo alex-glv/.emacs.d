@@ -2,12 +2,8 @@
 
 (package-initialize)
 
-;(require 'cust-defaults)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
-
-;; smart tab behavior - indent or complete
-(setq tab-always-indent 'complete)
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
@@ -46,14 +42,32 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
+(use-package company-go
+  :ensure t
+  :config
+  (add-hook 'go-mode-hook (lambda ()
+                            (setq gofmt-command "goimports")
+                            (set (make-local-variable 'company-backends) '(company-go))
+                            (company-mode)))
+  ;:config
+  ;(add-hook 'completion-at-point-functions 'company-go)
+)
+
 (use-package company
   :ensure t
   :config
+  (setq tab-always-indent 'complete)
   (global-company-mode))
 
 (use-package company-quickhelp
   :ensure t)
 
+
+(use-package inf-clojure
+  :ensure t)
+
+(use-package alchemist
+  :ensure t)
 
 (use-package zenburn-theme
              :ensure t
@@ -76,23 +90,21 @@
   (add-hook 'lisp-interaction-mode-hook #'eldoc-mode)
   (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode))
 
-(use-package avy
+(use-package go-mode
   :ensure t
-  :bind (("C-x c c" . avy-goto-char)
-         ("C-x c s" . avy-goto-char-timer)
-         ("C-x c a" . avy-goto-word-0))
+  :bind (:map go-mode-map
+              ("M-." . godef-jump)
+              ("M-," . pop-tag-mark))
   :config
-  (setq avy-background t)
-  (setq-default avy-keys '(?a ?r ?s ?t ?n ?e ?i ?o)))
-
+  (add-hook 'before-save-hook #'gofmt-before-save))
 
 (use-package magit
   :ensure t
-  :bind (("C-x g" . magit-status)))
+  :bind ("C-x g" . magit-status))
 
 (use-package projectile
   :ensure t
-  :bind ("s-p" . projectile-command-map)
+  :bind ("C-c C-p" . projectile-command-map)
   :config
   (projectile-global-mode +1))
 
@@ -179,35 +191,45 @@
   (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
   (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion))
 
-(use-package ido
+;; (use-package ido
+;;   :ensure t
+;;   :config
+;;   (setq ido-enable-prefix nil
+;;         ido-enable-flex-matching t
+;;         ido-create-new-buffer 'always
+;;         ido-use-filename-at-point 'guess
+;;         ido-max-prospects 10
+;;         ido-save-directory-list-file (expand-file-name "ido.hist" user-emacs-directory)
+;;         ido-default-file-method 'selected-window
+;;         ido-auto-merge-work-directories-length -1)
+;;   (ido-mode +1))
+
+(use-package ivy
   :ensure t
+  :bind ("C-c C-r" . ivy-recentf)
   :config
-  (setq ido-enable-prefix nil
-        ido-enable-flex-matching t
-        ido-create-new-buffer 'always
-        ido-use-filename-at-point 'guess
-        ido-max-prospects 10
-        ido-save-directory-list-file (expand-file-name "ido.hist" user-emacs-directory)
-        ido-default-file-method 'selected-window
-        ido-auto-merge-work-directories-length -1)
-  (ido-mode +1))
+  (ivy-mode))
 
-(use-package ido-ubiquitous
+(use-package counsel
   :ensure t
-  :config
-  (ido-ubiquitous-mode +1))
+  :bind ("M-x" . counsel-M-x))
+
+;; (use-package ido-ubiquitous
+;;   :ensure t
+;;   :config
+;;   (ido-ubiquitous-mode +1))
 
 
-(use-package flx-ido
-  :ensure t
-  :config
-  (flx-ido-mode +1)
-  ;; disable ido faces to see flx highlights
-  (setq ido-use-faces nil))
+;; (use-package flx-ido
+;;   :ensure t
+;;   :config
+;;   (flx-ido-mode +1)
+;;   ;; disable ido faces to see flx highlights
+;;   (setq ido-use-faces nil))
 
-(use-package smex
-  :ensure t
-  :bind ("M-x" . smex))
+;; (use-package smex
+;;   :ensure t
+;;   :bind ("M-x" . smex))
 
 (use-package markdown-mode
              :ensure t)
@@ -242,6 +264,19 @@
   :config
   (which-key-mode +1))
 
+(use-package rust-mode
+  :ensure t)
+
+(use-package flycheck-rust
+  :ensure t
+  :config (flycheck-rust-setup))
+
+(use-package racer
+  :ensure t
+  :config
+  (add-hook 'rust-mode-hook #'racer-mode)
+  (add-hook 'racer-mode-hook #'eldoc-mode))
+
 (use-package tramp
              :init
              (mapc
@@ -250,12 +285,24 @@
               (face-list))
              :config (add-to-list 'tramp-remote-path "/usr/local/bin/"))
 
+(use-package multiple-cursors
+  :ensure t
+  :bind (("C-c l" . mc/edit-lines)
+         ("C-c n" . mc/mark-next-like-this)
+         ("C-c p" . mc/mark-previous-like-this)
+         ("C-c C-c" . mc/mark-all-like-this)
+         ("C-c i" . mc/insert-numbers)
+         ("C-c s" . mc/sort-regions)
+         ("C-c r" . mc/reverse-regions))
+  :config (multiple-cursors-mode))
+
 (defun copy-to-osx-clipboard ()
   (interactive)
   (progn
     (cond
-     ((and (display-graphic-p) x-select-enable-clipboard)
-      (x-set-selection 'CLIPBOARD (buffer-substring (region-beginning) (region-end))))
+     ;
+     ;; ((and (display-graphic-p) select-enable-clipboard)
+     ;;  (x-set-selection 'CLIPBOARD (buffer-substring (region-beginning) (region-end))))
      (t (shell-command-on-region (region-beginning) (region-end)
 				 "pbcopy")))))
 
@@ -267,6 +314,9 @@
   (setenv "PATH" (concat (getenv "PATH") ":" (getenv "GOBIN") ":" curr-sys-path))
   (add-to-list 'exec-path (getenv "GOBIN"))  
   (add-to-list 'exec-path curr-sys-path))
+
+(add-to-list 'tramp-default-proxies-alist
+                 '("tjg32" nil "/ssh:gmb@webdev.awbv.net:"))
 
 
 ;; (when (memq window-system '(mac ns))
