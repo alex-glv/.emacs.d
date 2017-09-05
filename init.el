@@ -51,7 +51,7 @@
                             (company-mode)))
   ;:config
   ;(add-hook 'completion-at-point-functions 'company-go)
-)
+  )
 
 (use-package company
   :ensure t
@@ -106,7 +106,8 @@
   :ensure t
   :bind ("C-c C-p" . projectile-command-map)
   :config
-  (projectile-global-mode +1))
+  (projectile-global-mode +1)
+  (setq projectile-completion-system 'ivy))
 
 (use-package clj-refactor
   :ensure t
@@ -171,6 +172,10 @@
     (exec-path-from-shell-initialize)))
 
 
+(use-package terraform-mode
+  :ensure t)
+
+
 (use-package clojure-mode
   :ensure t
   :config
@@ -206,13 +211,19 @@
 
 (use-package ivy
   :ensure t
-  :bind ("C-c C-r" . ivy-recentf)
+  :bind
+  ("C-c C-r" . ivy-recentf)
+  ("C-s" . swiper)
   :config
-  (ivy-mode))
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t))
 
 (use-package counsel
   :ensure t
   :bind ("M-x" . counsel-M-x))
+
+(use-package smex
+  :ensure t)
 
 ;; (use-package ido-ubiquitous
 ;;   :ensure t
@@ -226,10 +237,6 @@
 ;;   (flx-ido-mode +1)
 ;;   ;; disable ido faces to see flx highlights
 ;;   (setq ido-use-faces nil))
-
-;; (use-package smex
-;;   :ensure t
-;;   :bind ("M-x" . smex))
 
 (use-package markdown-mode
              :ensure t)

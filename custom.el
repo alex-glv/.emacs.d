@@ -22,7 +22,7 @@
  '(cursor-type (quote box))
  '(custom-safe-themes
    (quote
-    ("f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" default)))
+    ("67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" default)))
  '(fci-rule-color "#383838")
  '(grep-files-aliases
    (quote
@@ -40,6 +40,7 @@
      ("tex" . "*.tex")
      ("texi" . "*.texi")
      ("asm" . "*.[sS]"))))
+ '(ivy-format-function (quote ivy-format-function-arrow))
  '(linum-format (quote dynamic))
  '(nrepl-message-colors
    (quote
@@ -49,7 +50,7 @@
  '(org-time-stamp-rounding-minutes (quote (5 15)))
  '(package-selected-packages
    (quote
-    (clj-refactor clj-refacor inf-clojure avy company-flx which-key undo-tree flycheck golden-ratio yaml-mode markdown-mode smex flx-ido ido-ubiquitous cider clojure-mode exec-path-from-shell paredit expand-region projectile magit rainbow-mode rainbow-delimiters zenburn-theme with-editor use-package magit-popup company)))
+    (smex terraform-mode racer flycheck-rust rust-mode counsel ivy clj-refactor clj-refacor inf-clojure avy company-flx which-key undo-tree flycheck golden-ratio yaml-mode markdown-mode flx-ido ido-ubiquitous cider clojure-mode exec-path-from-shell paredit expand-region projectile magit rainbow-mode rainbow-delimiters zenburn-theme with-editor use-package magit-popup company)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(scroll-bar-mode nil)
  '(search-nonincremental-instead nil)
