@@ -5,6 +5,7 @@
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
 
+
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
@@ -28,12 +29,11 @@
 
 (menu-bar-mode 0)
 
-
 (setq-default indent-tabs-mode nil)
 
 
-(global-set-key (kbd "C-M-]") (lambda () (interactive) (other-window 1))) 
-(global-set-key (kbd "C-M-[") (lambda () (interactive) (other-window (- 1))))
+(global-set-key (kbd "C-M-y") (lambda () (interactive) (other-window 1)))
+(global-set-key (kbd "C-M-l") (lambda () (interactive) (other-window (- 1))))
 
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
@@ -48,6 +48,10 @@
   (add-hook 'go-mode-hook (lambda ()
                             (setq gofmt-command "goimports")
                             (set (make-local-variable 'company-backends) '(company-go))
+                            (outline-minor-mode)
+                            (make-local-variable 'outline-regexp)
+                            (setq outline-regexp "//\\.\\|//[^\r\n\f][^\r\n\f]\\|pack\\|func\\|impo\\|cons\\|var.\\|type\\|\t\t*....")
+                            (outline-minor-mode 1)
                             (company-mode)))
   ;:config
   ;(add-hook 'completion-at-point-functions 'company-go)
@@ -96,7 +100,15 @@
               ("M-." . godef-jump)
               ("M-," . pop-tag-mark))
   :config
-  (add-hook 'before-save-hook #'gofmt-before-save))
+  (add-hook 'before-save-hook #'gofmt-before-save)
+  (use-package go-guru
+  :ensure t
+  :config
+  (add-hook 'go-mode-hook (lambda ()
+                            (go-guru-hl-identifier-mode))))
+  (use-package godoctor))
+
+
 
 (use-package magit
   :ensure t
@@ -117,6 +129,15 @@
   :ensure t
   :bind ("C-=" . er/expand-region))
 
+(use-package eshell
+  :config
+  (setenv "PAGER" "cat")
+  (let ((curr-sys-path "/usr/local/bin"))
+  (setenv "PATH" (concat (getenv "PATH") ":" curr-sys-path ":/Users/sashka/go/bin:/usr/bin"))
+  (add-to-list 'exec-path "/Users/sashka/go/bin")
+  (setenv "GOPATH" "/Users/sashka/go")
+  (add-to-list 'exec-path curr-sys-path)))
+;;; 
 (use-package paredit
              :ensure t
              :bind
@@ -213,7 +234,7 @@
   :ensure t
   :bind
   ("C-c C-r" . ivy-recentf)
-  ("C-s" . swiper)
+  ("C-r" . swiper)
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t))
@@ -303,6 +324,8 @@
          ("C-c r" . mc/reverse-regions))
   :config (multiple-cursors-mode))
 
+(setq backup-directory-alist '(("." . "~/.emacs-saves/")))
+
 (defun copy-to-osx-clipboard ()
   (interactive)
   (progn
@@ -313,18 +336,14 @@
      (t (shell-command-on-region (region-beginning) (region-end)
 				 "pbcopy")))))
 
+(defun kill-next ()
+  (interactive)
+  (other-window 1)
+  (kill-buffer-and-window))
+
 (defun paste-from-osx-clipboard ()
   (interactive)
   (insert (shell-command-to-string "pbpaste")))
-
-(let ((curr-sys-path "/usr/local/bin"))
-  (setenv "PATH" (concat (getenv "PATH") ":" (getenv "GOBIN") ":" curr-sys-path))
-  (add-to-list 'exec-path (getenv "GOBIN"))  
-  (add-to-list 'exec-path curr-sys-path))
-
-(add-to-list 'tramp-default-proxies-alist
-                 '("tjg32" nil "/ssh:gmb@webdev.awbv.net:"))
-
 
 ;; (when (memq window-system '(mac ns))
 ;;   (exec-path-from-shell-initialize))
