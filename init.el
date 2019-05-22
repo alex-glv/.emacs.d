@@ -66,6 +66,25 @@
 (use-package company-quickhelp
   :ensure t)
 
+(use-package evil
+  :ensure t
+  :init
+  (setq evil-want-C-u-scroll t)
+  (setq evil-want-keybinding nil)
+  :config
+  (evil-mode 1))
+
+(use-package evil-collection
+  :ensure t
+  :after (evil)
+  :config
+  (evil-collection-init))
+
+(use-package evil-mc
+  :ensure t
+  :after (evil)
+  :config
+  (global-evil-mc-mode  1))
 
 (use-package inf-clojure
   :ensure t)
@@ -108,11 +127,13 @@
                             (go-guru-hl-identifier-mode))))
   (use-package godoctor))
 
-
-
 (use-package magit
   :ensure t
   :bind ("C-x g" . magit-status))
+
+(use-package evil-magit
+  :after (magit) 
+  :ensure t)
 
 (use-package projectile
   :ensure t
@@ -313,16 +334,17 @@
               (face-list))
              :config (add-to-list 'tramp-remote-path "/usr/local/bin/"))
 
-(use-package multiple-cursors
-  :ensure t
-  :bind (("C-c l" . mc/edit-lines)
-         ("C-c n" . mc/mark-next-like-this)
-         ("C-c p" . mc/mark-previous-like-this)
-         ("C-c C-c" . mc/mark-all-like-this)
-         ("C-c i" . mc/insert-numbers)
-         ("C-c s" . mc/sort-regions)
-         ("C-c r" . mc/reverse-regions))
-  :config (multiple-cursors-mode))
+
+;; (use-package multiple-cursors
+;;   :ensure t
+;;   :bind (("C-c l" . mc/edit-lines)
+;;          ("C-c n" . mc/mark-next-like-this)
+;;          ("C-c p" . mc/mark-previous-like-this)
+;;          ("C-c C-c" . mc/mark-all-like-this)
+;;          ("C-c i" . mc/insert-numbers)
+;;          ("C-c s" . mc/sort-regions)
+;;          ("C-c r" . mc/reverse-regions))
+;;   :config (multiple-cursors-mode))
 
 (setq backup-directory-alist '(("." . "~/.emacs-saves/")))
 
@@ -360,9 +382,5 @@
  '(custom-safe-themes
    (quote
     ("f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" default))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
+

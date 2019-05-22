@@ -3,6 +3,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:foreground "#DCDCCC" :background "#3F3F3F" :family "Iosevka Term" :foundry "nil" :slant normal :weight normal :height 180 :width normal))))
  '(mode-line ((t (:background "#000000" :foreground "#F5F5F5" :bfox (:line-width 1 :color "#212121" :style unspecified)))))
  '(scroll-bar ((t (:underline nil :weight normal)))))
 (custom-set-variables
@@ -22,7 +23,7 @@
  '(cursor-type (quote box))
  '(custom-safe-themes
    (quote
-    ("67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" default)))
+    ("54f2d1fcc9bcadedd50398697618f7c34aceb9966a6cbaa99829eb64c0c1f3ca" "f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" default)))
  '(fci-rule-color "#383838")
  '(grep-files-aliases
    (quote
@@ -42,6 +43,7 @@
      ("asm" . "*.[sS]"))))
  '(ivy-format-function (quote ivy-format-function-arrow))
  '(linum-format (quote dynamic))
+ '(menu-bar-mode nil)
  '(nrepl-message-colors
    (quote
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
@@ -50,10 +52,12 @@
  '(org-time-stamp-rounding-minutes (quote (5 15)))
  '(package-selected-packages
    (quote
-    (smex terraform-mode racer flycheck-rust rust-mode counsel ivy clj-refactor clj-refacor inf-clojure avy company-flx which-key undo-tree flycheck golden-ratio yaml-mode markdown-mode flx-ido ido-ubiquitous cider clojure-mode exec-path-from-shell paredit expand-region projectile magit rainbow-mode rainbow-delimiters zenburn-theme with-editor use-package magit-popup company)))
+    (evil-mc evil-magit evil-mode groovy-mode godoctor go-guru smex terraform-mode racer flycheck-rust rust-mode counsel ivy clj-refactor clj-refacor inf-clojure avy company-flx which-key undo-tree flycheck golden-ratio yaml-mode markdown-mode flx-ido ido-ubiquitous cider clojure-mode exec-path-from-shell paredit expand-region projectile magit rainbow-mode rainbow-delimiters zenburn-theme with-editor use-package magit-popup company)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(scroll-bar-mode nil)
  '(search-nonincremental-instead nil)
+ '(show-paren-mode t)
+ '(tool-bar-mode nil)
  '(vc-annotate-background "#2B2B2B")
  '(vc-annotate-color-map
    (quote
