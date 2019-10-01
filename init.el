@@ -71,8 +71,9 @@
   :init
   (setq evil-want-C-u-scroll t)
   (setq evil-want-keybinding nil)
-  :config
-  (evil-mode 1))
+; :config
+;  (evil-mode 1);
+  )
 
 (use-package evil-collection
   :ensure t
@@ -319,6 +320,12 @@
 (use-package flycheck-rust
   :ensure t
   :config (flycheck-rust-setup))
+
+(use-package restclient
+  :ensure t)
+
+(use-package company-restclient
+  :ensure t)
 
 (use-package racer
   :ensure t
