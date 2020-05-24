@@ -1,9 +1,20 @@
+;;; 
 (require 'package)
 
 (package-initialize)
 
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
+
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+
+(eval-when-compile
+  (unless (package-installed-p 'use-package)
+    (package-install 'use-package))
+  (require 'use-package))
+
 
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -12,10 +23,6 @@
 (setq settings-dir
       (concat user-emacs-directory "/settings/"))
 
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-
-(require 'use-package)
 
 (add-to-list 'load-path settings-dir)
 
@@ -66,27 +73,6 @@
 (use-package company-quickhelp
   :ensure t)
 
-(use-package evil
-  :ensure t
-  :init
-  (setq evil-want-C-u-scroll t)
-  (setq evil-want-keybinding nil)
-; :config
-;  (evil-mode 1);
-  )
-
-(use-package evil-collection
-  :ensure t
-  :after (evil)
-  :config
-  (evil-collection-init))
-
-(use-package evil-mc
-  :ensure t
-  :after (evil)
-  :config
-  (global-evil-mc-mode  1))
-
 (use-package inf-clojure
   :ensure t)
 
@@ -96,7 +82,7 @@
 (use-package zenburn-theme
              :ensure t
              :config
-             (load-theme 'zenburn))
+             (load-theme 'zenburn t))
 
 
 (use-package rainbow-delimiters
@@ -127,6 +113,9 @@
   (add-hook 'go-mode-hook (lambda ()
                             (go-guru-hl-identifier-mode))))
   (use-package godoctor))
+
+(use-package godoctor
+  :ensure t)
 
 (use-package magit
   :ensure t
