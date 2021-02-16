@@ -13,4 +13,5 @@ tramp
 backups
 repl-port
 .#*
-session.*
+session.
+recentf

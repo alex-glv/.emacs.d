@@ -112,7 +112,8 @@
   :config
   (add-hook 'go-mode-hook (lambda ()
                             (go-guru-hl-identifier-mode))))
-  (use-package godoctor))
+  ;(use-package godoctor)
+  )
 
 (use-package godoctor
   :ensure t)
@@ -144,9 +145,6 @@
   :config
   (setenv "PAGER" "cat")
   (let ((curr-sys-path "/usr/local/bin"))
-  (setenv "PATH" (concat (getenv "PATH") ":" curr-sys-path ":/Users/sashka/go/bin:/usr/bin"))
-  (add-to-list 'exec-path "/Users/sashka/go/bin")
-  (setenv "GOPATH" "/Users/sashka/go")
   (add-to-list 'exec-path curr-sys-path)))
 ;;; 
 (use-package paredit
@@ -244,10 +242,10 @@
 (use-package ivy
   :ensure t
   :bind
-  ("C-c C-r" . ivy-recentf)
   ("C-r" . swiper)
   :config
   (ivy-mode 1)
+  (global-set-key (kbd "C-c C-r") 'ivy-resume)
   (setq ivy-use-virtual-buffers t))
 
 (use-package counsel
@@ -303,24 +301,13 @@
   :config
   (which-key-mode +1))
 
-(use-package rust-mode
-  :ensure t)
-
-(use-package flycheck-rust
-  :ensure t
-  :config (flycheck-rust-setup))
-
 (use-package restclient
   :ensure t)
 
 (use-package company-restclient
   :ensure t)
 
-(use-package racer
-  :ensure t
-  :config
-  (add-hook 'rust-mode-hook #'racer-mode)
-  (add-hook 'racer-mode-hook #'eldoc-mode))
+(use-package rustic)
 
 (use-package tramp
              :init
@@ -331,20 +318,9 @@
              :config (add-to-list 'tramp-remote-path "/usr/local/bin/"))
 
 
-;; (use-package multiple-cursors
-;;   :ensure t
-;;   :bind (("C-c l" . mc/edit-lines)
-;;          ("C-c n" . mc/mark-next-like-this)
-;;          ("C-c p" . mc/mark-previous-like-this)
-;;          ("C-c C-c" . mc/mark-all-like-this)
-;;          ("C-c i" . mc/insert-numbers)
-;;          ("C-c s" . mc/sort-regions)
-;;          ("C-c r" . mc/reverse-regions))
-;;   :config (multiple-cursors-mode))
-
 (setq backup-directory-alist '(("." . "~/.emacs-saves/")))
 
-(defun copy-to-osx-clipboard ()
+(defun copy-to-clipboard ()
   (interactive)
   (progn
     (cond
@@ -352,16 +328,33 @@
      ;; ((and (display-graphic-p) select-enable-clipboard)
      ;;  (x-set-selection 'CLIPBOARD (buffer-substring (region-beginning) (region-end))))
      (t (shell-command-on-region (region-beginning) (region-end)
-				 "pbcopy")))))
+				 "copy")))))
+(defun wsl-copy-region-to-clipboard (start end)
+  "Copy region to Windows clipboard."
+  (interactive "r")
+  (call-process-region start end "clip.exe" nil 0))
+
+(defun wsl-clipboard-to-string ()
+  "Return Windows clipboard as string."
+  (let ((coding-system-for-read 'dos))
+    (substring ;remove added trailing
+     (shell-command-to-string "powershell.exe -Command Get-Clipboard") 0 -1)))
+
+(defun wsl-paste-from-clipboard (arg)
+  "Insert Windows clipboard at point. With prefix ARG, also add to kill-ring"
+  (interactive "P")
+  (let ((clip (wsl-clipboard-to-string)))
+    (insert clip)
+        (if arg (kill-new clip))))
 
 (defun kill-next ()
   (interactive)
   (other-window 1)
   (kill-buffer-and-window))
 
-(defun paste-from-osx-clipboard ()
+(defun paste-from-clipboard ()
   (interactive)
-  (insert (shell-command-to-string "pbpaste")))
+  (insert (shell-command-to-string "paste")))
 
 ;; (when (memq window-system '(mac ns))
 ;;   (exec-path-from-shell-initialize))
@@ -375,6 +368,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-use-speed-commands t)
  '(custom-safe-themes
    (quote
     ("f5512c02e0a6887e987a816918b7a684d558716262ac7ee2dd0437ab913eaec6" default))))
