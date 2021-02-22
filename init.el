@@ -49,21 +49,6 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
-(use-package company-go
-  :ensure t
-  :config
-  (add-hook 'go-mode-hook (lambda ()
-                            (setq gofmt-command "goimports")
-                            (set (make-local-variable 'company-backends) '(company-go))
-                            (outline-minor-mode)
-                            (make-local-variable 'outline-regexp)
-                            (setq outline-regexp "//\\.\\|//[^\r\n\f][^\r\n\f]\\|pack\\|func\\|impo\\|cons\\|var.\\|type\\|\t\t*....")
-                            (outline-minor-mode 1)
-                            (company-mode)))
-  ;:config
-  ;(add-hook 'completion-at-point-functions 'company-go)
-  )
-
 (use-package company
   :ensure t
   :config
@@ -99,24 +84,6 @@
   (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
   (add-hook 'lisp-interaction-mode-hook #'eldoc-mode)
   (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode))
-
-(use-package go-mode
-  :ensure t
-  :bind (:map go-mode-map
-              ("M-." . godef-jump)
-              ("M-," . pop-tag-mark))
-  :config
-  (add-hook 'before-save-hook #'gofmt-before-save)
-  (use-package go-guru
-  :ensure t
-  :config
-  (add-hook 'go-mode-hook (lambda ()
-                            (go-guru-hl-identifier-mode))))
-  ;(use-package godoctor)
-  )
-
-(use-package godoctor
-  :ensure t)
 
 (use-package magit
   :ensure t
@@ -250,7 +217,10 @@
 
 (use-package counsel
   :ensure t
-  :bind ("M-x" . counsel-M-x))
+  :bind
+  ("M-x" . counsel-M-x)
+  ("M-<f9>" . counsel-fzf)
+  ("M-<f10>" . counsel-rg))
 
 (use-package smex
   :ensure t)
@@ -308,6 +278,20 @@
   :ensure t)
 
 (use-package rustic)
+
+(use-package lsp-mode
+  :ensure t
+  :config
+  :hook
+  ((go-mode . lsp)
+   (lsp-mode . lsp-enable-which-key-integration))
+  :init
+  (bind-key "<f12>" 'lsp-find-definition)
+  :commands lsp
+  )
+
+(use-package lsp-ivy :ensure t :commands lsp-ivy-workspace-symbol)
+(use-package lsp-treemacs :ensure t :commands lsp-treemacs-errors-list)
 
 (use-package tramp
              :init
